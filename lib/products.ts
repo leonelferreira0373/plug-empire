@@ -47,11 +47,11 @@ export const PRODUCTS: Product[] = [
       ],
     },
     images: [
-      "/products/beanie-black-1.jpg",
-      "/products/beanie-black-2.jpg",
-      "/products/beanie-black-3.jpg",
       "/products/beanie-black-4.jpg",
       "/products/beanie-black-pair.jpg",
+      "/products/beanie-black-2.jpg",
+      "/products/beanie-black-1.jpg",
+      "/products/beanie-black-3.jpg",
     ],
     sizes: ["Único"],
     colors: [
