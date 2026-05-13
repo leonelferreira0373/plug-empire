@@ -1,26 +1,151 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-bebas);
+
+  --color-gold: #d4af37;
+  --color-gold-light: #e8c76a;
+  --color-gold-dark: #8b6f1f;
+  --color-yellow-bee: #f5b82e;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-fg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #000000;
+  --foreground: #f5f5f5;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --border: #1f1f1f;
+  --muted: #1a1a1a;
+  --muted-fg: #a1a1a1;
 }
 
+html.light {
+  --background: #fafaf7;
+  --foreground: #0a0a0a;
+  --surface: #ffffff;
+  --surface-2: #f5f5f0;
+  --border: #e5e5e0;
+  --muted: #f0f0eb;
+  --muted-fg: #595955;
+}
+
+html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #000;
+}
+
+/* Gold accent utility */
+.text-gold {
+  color: var(--color-gold);
+}
+.bg-gold {
+  background: var(--color-gold);
+}
+.border-gold {
+  border-color: var(--color-gold);
+}
+
+/* Gradient gold for headlines */
+.gold-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light) 0%,
+    var(--color-gold) 50%,
+    var(--color-gold-dark) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Display font helper */
+.font-display {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Custom scrollbar (subtle gold) */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-dark);
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Marquee for trust strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Subtle gold shine on buttons */
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.btn-gold-shine {
+  background: linear-gradient(
+    110deg,
+    var(--color-gold-dark) 0%,
+    var(--color-gold) 35%,
+    var(--color-gold-light) 50%,
+    var(--color-gold) 65%,
+    var(--color-gold-dark) 100%
+  );
+  background-size: 200% 100%;
+  animation: shine 6s linear infinite;
+  color: #0a0a0a;
 }
