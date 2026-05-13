@@ -4,7 +4,7 @@ export type Product = {
   slug: string;
   name: { pt: string; en: string };
   category: Category;
-  price: number; // AOA
+  price: number; // EUR
   oldPrice?: number;
   badge?: { pt: string; en: string };
   description: { pt: string; en: string };
@@ -25,8 +25,8 @@ export const PRODUCTS: Product[] = [
       en: "Bee Beanie — Black",
     },
     category: "tocas",
-    price: 8500,
-    oldPrice: 12000,
+    price: 34.9,
+    oldPrice: 49.9,
     badge: { pt: "Mais vendido", en: "Bestseller" },
     description: {
       pt: "A toca emblema do Plug Empire. Algodão de alta densidade com forro de cetim que protege o cabelo e evita o frizz. Bordado dourado da abelha — assinatura discreta, presença total.",
@@ -71,7 +71,7 @@ export const PRODUCTS: Product[] = [
       en: "Bee Beanie — White",
     },
     category: "tocas",
-    price: 8500,
+    price: 34.9,
     description: {
       pt: "Versão branca da toca assinatura. Limpa, leve, com o bordado da abelha em amarelo dourado. Perfeita para os tons mais claros do guarda-roupa.",
       en: "White version of the signature beanie. Clean, lightweight, with the bee embroidered in golden yellow. Perfect for the brighter side of the wardrobe.",
@@ -109,7 +109,7 @@ export const PRODUCTS: Product[] = [
       en: "Bee Beanie — Yellow",
     },
     category: "tocas",
-    price: 8500,
+    price: 34.9,
     badge: { pt: "Edição limitada", en: "Limited drop" },
     description: {
       pt: "A toca em amarelo abelha — uma declaração ousada com o lettering Stravages preto. Edição limitada da temporada.",
@@ -145,7 +145,7 @@ export const PRODUCTS: Product[] = [
       en: "Bee Beanie — Pink",
     },
     category: "tocas",
-    price: 8500,
+    price: 34.9,
     description: {
       pt: "Rosa pó com o lettering Stravages a destacar-se. Suave, feminina, sem perder o atitude da casa.",
       en: "Powder pink with the Stravages lettering set against it. Soft, feminine, without losing the house's attitude.",
@@ -185,7 +185,7 @@ export const PRODUCTS: Product[] = [
       en: "Bee Balaclava",
     },
     category: "balaclavas",
-    price: 14500,
+    price: 54.9,
     badge: { pt: "Novo", en: "New" },
     description: {
       pt: "Balaclava em tecido técnico preto, com a abelha bordada em amarelo dourado. Pensada para os dias frios — proteção total sem perder o estilo.",
@@ -218,8 +218,8 @@ export const PRODUCTS: Product[] = [
       en: "Empire Tracksuit — Yellow",
     },
     category: "fatos",
-    price: 65000,
-    oldPrice: 80000,
+    price: 179.9,
+    oldPrice: 219.9,
     badge: { pt: "Conjunto", en: "Full set" },
     description: {
       pt: "Conjunto completo: hoodie zip + calça de fato em amarelo abelha, com patches bordados e detalhes em vermelho. Inclui a toca a condizer. Streetwear premium feito para virar cabeças.",
@@ -257,7 +257,7 @@ export const PRODUCTS: Product[] = [
       en: "Stravages Wallet — Leather",
     },
     category: "carteiras",
-    price: 28500,
+    price: 89.9,
     badge: { pt: "Premium", en: "Premium" },
     description: {
       pt: "Carteira em couro preto com a abelha e o lettering Stravages gravados a quente em folha dourada. Compartimentos para 6 cartões, fenda para notas e bolso para moedas. A peça mais discreta — e mais reconhecível.",

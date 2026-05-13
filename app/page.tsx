@@ -7,7 +7,7 @@ import { useLang } from "@/components/providers";
 import { dict } from "@/lib/i18n";
 import { PRODUCTS } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
-import { formatAOA } from "@/lib/utils";
+import { formatEUR } from "@/lib/utils";
 
 export default function Home() {
   const { lang } = useLang();
@@ -27,11 +27,13 @@ export default function Home() {
             alt=""
             fill
             priority
-            className="object-cover opacity-30"
+            className="object-cover opacity-50 md:opacity-30"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
+          {/* Mobile: subtle gradient only at the bottom for text legibility, image stays visible */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/40 to-background md:from-background/40 md:via-background/70 md:to-background" />
+          {/* Desktop only: side fade so the right-column image stack reads */}
+          <div className="absolute inset-0 hidden bg-gradient-to-r from-background via-background/30 to-transparent md:block" />
         </div>
 
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 md:gap-16 md:py-28 sm:px-6">
@@ -98,7 +100,7 @@ export default function Home() {
                     {wallet.name[lang]}
                   </div>
                   <div className="mt-1 text-sm text-white/70">
-                    {formatAOA(wallet.price)}
+                    {formatEUR(wallet.price)}
                   </div>
                 </div>
                 <Link
@@ -165,11 +167,11 @@ export default function Home() {
               </Link>
               <div className="flex items-baseline gap-2">
                 <span className="font-display text-2xl font-bold text-gold">
-                  {formatAOA(featured.price)}
+                  {formatEUR(featured.price)}
                 </span>
                 {featured.oldPrice && (
                   <span className="text-sm text-muted-foreground line-through">
-                    {formatAOA(featured.oldPrice)}
+                    {formatEUR(featured.oldPrice)}
                   </span>
                 )}
               </div>
@@ -248,8 +250,8 @@ export default function Home() {
           </blockquote>
           <p className="mt-8 text-sm leading-relaxed text-white/70 sm:text-base">
             {lang === "pt"
-              ? "Nascemos em Luanda. Vestimos quem constrói o seu próprio nome. Cada peça do Plug Empire — toca, balaclava, fato, carteira — é desenhada e produzida com o mesmo padrão: qualidade premium, identidade clara, sem atalhos."
-              : "Born in Luanda. We dress those building their own name. Every Plug Empire piece — beanie, balaclava, tracksuit, wallet — is designed and produced to the same standard: premium quality, clear identity, no shortcuts."}
+              ? "Marca portuguesa. Vestimos quem constrói o seu próprio nome. Cada peça do Plug Empire — toca, balaclava, fato, carteira — é desenhada e produzida com o mesmo padrão: qualidade premium, identidade clara, sem atalhos."
+              : "Portuguese brand. We dress those building their own name. Every Plug Empire piece — beanie, balaclava, tracksuit, wallet — is designed and produced to the same standard: premium quality, clear identity, no shortcuts."}
           </p>
           <Link
             href="/sobre"

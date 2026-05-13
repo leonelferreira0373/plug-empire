@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useLang } from "@/components/providers";
 import { dict } from "@/lib/i18n";
-import { cn, formatAOA } from "@/lib/utils";
+import { cn, formatEUR } from "@/lib/utils";
 import { useCart } from "@/lib/cart";
 import { whatsappUrl } from "@/lib/config";
 import { ProductCard } from "@/components/product-card";
@@ -59,7 +59,7 @@ export function ProductDetail({
       lang === "pt" ? "Olá! Quero comprar:" : "Hi! I want to buy:",
       "",
       `• ${product.name[lang]} ${size ? `· ${size}` : ""} ${color ? `· ${color}` : ""}`,
-      `  ${formatAOA(product.price)} × ${qty} = ${formatAOA(product.price * qty)}`,
+      `  ${formatEUR(product.price)} × ${qty} = ${formatEUR(product.price * qty)}`,
       "",
       lang === "pt"
         ? "Podem confirmar disponibilidade e envio?"
@@ -139,12 +139,12 @@ export function ProductDetail({
 
           <div className="mt-6 flex items-baseline gap-3">
             <span className="font-display text-3xl font-bold text-gold">
-              {formatAOA(product.price)}
+              {formatEUR(product.price)}
             </span>
             {onSale && (
               <>
                 <span className="text-base text-muted-foreground line-through">
-                  {formatAOA(product.oldPrice!)}
+                  {formatEUR(product.oldPrice!)}
                 </span>
                 <span className="rounded-full bg-gold/10 px-2 py-0.5 text-xs font-semibold text-gold">
                   -{Math.round((1 - product.price / product.oldPrice!) * 100)}%

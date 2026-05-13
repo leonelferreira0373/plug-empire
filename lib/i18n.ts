@@ -13,7 +13,7 @@ export const dict = {
     hero_title_1: "Todo o sonho",
     hero_title_2: "é possível.",
     hero_subtitle:
-      "Streetwear premium nascido em Luanda. Cada peça do Plug Empire é feita para os que constroem o seu próprio nome.",
+      "Streetwear premium nascido em Portugal. Cada peça do Plug Empire é feita para os que constroem o seu próprio nome.",
     hero_cta_shop: "Ver toda a coleção",
     hero_cta_story: "A nossa história",
     // Featured
@@ -22,7 +22,7 @@ export const dict = {
     featured_subtitle: "Plug Grafitti Logo Hat — a toca que define a casa.",
     // Trust strip
     trust_quality: "QUALIDADE PREMIUM",
-    trust_shipping: "ENVIO PARA TODA ANGOLA",
+    trust_shipping: "ENVIO PARA TODA A EUROPA",
     trust_secure: "PAGAMENTO SEGURO",
     trust_authentic: "100% AUTÊNTICO",
     // Catalog
@@ -39,7 +39,7 @@ export const dict = {
     pdp_in_stock: "em stock",
     pdp_low_stock: "Últimas unidades",
     pdp_features: "Detalhes do produto",
-    pdp_shipping_info: "Envio em 24h para Luanda. 2–5 dias para outras províncias.",
+    pdp_shipping_info: "Envio em 24h para Lisboa e Porto. 2–4 dias para o resto de Portugal.",
     pdp_returns_info: "7 dias para troca ou devolução.",
     pdp_secure_payment: "Pagamento seguro via WhatsApp",
     pdp_related: "Vai gostar também",
@@ -95,14 +95,14 @@ export const dict = {
     hero_title_1: "Every dream",
     hero_title_2: "is possible.",
     hero_subtitle:
-      "Premium streetwear born in Luanda. Every Plug Empire piece is made for those building their own name.",
+      "Premium streetwear born in Portugal. Every Plug Empire piece is made for those building their own name.",
     hero_cta_shop: "Shop the collection",
     hero_cta_story: "Our story",
     featured_eyebrow: "Featured",
     featured_title: "The house piece",
     featured_subtitle: "Plug Grafitti Logo Hat — the beanie that defines the house.",
     trust_quality: "PREMIUM QUALITY",
-    trust_shipping: "SHIPPING ACROSS ANGOLA",
+    trust_shipping: "SHIPPING ACROSS EUROPE",
     trust_secure: "SECURE PAYMENT",
     trust_authentic: "100% AUTHENTIC",
     catalog_title: "Shop",
@@ -117,7 +117,7 @@ export const dict = {
     pdp_in_stock: "in stock",
     pdp_low_stock: "Low stock",
     pdp_features: "Product details",
-    pdp_shipping_info: "Same-day shipping in Luanda. 2–5 days nationwide.",
+    pdp_shipping_info: "Same-day shipping in Lisbon & Porto. 2–4 days across Portugal.",
     pdp_returns_info: "7-day exchange & return window.",
     pdp_secure_payment: "Secure checkout via WhatsApp",
     pdp_related: "You'll also love",

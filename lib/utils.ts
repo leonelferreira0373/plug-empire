@@ -5,11 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatAOA(value: number): string {
-  return new Intl.NumberFormat("pt-AO", {
+export function formatEUR(value: number): string {
+  return new Intl.NumberFormat("pt-PT", {
     style: "currency",
-    currency: "AOA",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
+    currency: "EUR",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(value);
 }

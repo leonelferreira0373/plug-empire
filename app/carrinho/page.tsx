@@ -7,7 +7,7 @@ import { ArrowRight, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart, cartKey } from "@/lib/cart";
 import { useLang } from "@/components/providers";
 import { dict } from "@/lib/i18n";
-import { cn, formatAOA } from "@/lib/utils";
+import { cn, formatEUR } from "@/lib/utils";
 import { whatsappUrl } from "@/lib/config";
 
 export default function CartPage() {
@@ -32,10 +32,10 @@ export default function CartPage() {
       "",
       ...items.map(
         (i) =>
-          `• ${i.name}${i.size ? ` · ${i.size}` : ""}${i.color ? ` · ${i.color}` : ""} — ${i.qty}× ${formatAOA(i.price)} = ${formatAOA(i.price * i.qty)}`,
+          `• ${i.name}${i.size ? ` · ${i.size}` : ""}${i.color ? ` · ${i.color}` : ""} — ${i.qty}× ${formatEUR(i.price)} = ${formatEUR(i.price * i.qty)}`,
       ),
       "",
-      `${t.cart_subtotal}: ${formatAOA(subtotal)}`,
+      `${t.cart_subtotal}: ${formatEUR(subtotal)}`,
       "",
       lang === "pt"
         ? "Podem confirmar disponibilidade, envio e total final?"
@@ -128,13 +128,13 @@ export default function CartPage() {
                       onPlus={() => setQty(k, item.qty + 1)}
                     />
                     <div className="font-display text-base font-bold text-gold">
-                      {formatAOA(item.price * item.qty)}
+                      {formatEUR(item.price * item.qty)}
                     </div>
                   </div>
                 </div>
                 <div className="hidden flex-col items-end gap-4 sm:flex">
                   <div className="font-display text-base font-bold text-gold">
-                    {formatAOA(item.price * item.qty)}
+                    {formatEUR(item.price * item.qty)}
                   </div>
                   <QtyControl
                     qty={item.qty}
@@ -174,7 +174,7 @@ export default function CartPage() {
             <div className="flex items-center justify-between">
               <dt className="text-muted-foreground">{t.cart_subtotal}</dt>
               <dd className="font-display text-base font-bold">
-                {formatAOA(subtotal)}
+                {formatEUR(subtotal)}
               </dd>
             </div>
             <div className="flex items-center justify-between">
@@ -188,7 +188,7 @@ export default function CartPage() {
                 {t.cart_total}
               </dt>
               <dd className="font-display text-2xl font-bold text-gold">
-                {formatAOA(subtotal)}
+                {formatEUR(subtotal)}
               </dd>
             </div>
           </dl>

@@ -7,11 +7,11 @@ export const BRAND = {
   tagline_en: "Every dream is possible. You just have to believe.",
   email: "Plugempire.contact@gmail.com",
   // Phone in international format, no + or spaces. Used to build wa.me link.
-  whatsapp: "244900000000", // TODO: replace with real number when provided
+  whatsapp: "351900000000", // TODO: replace with real PT number when provided
   instagram_main: "plug_empire",
   instagram_brand: "stravages.clo",
   linktree: "https://linktr.ee/plug_empire",
-  address: "Luanda, Angola",
+  address: "Lisboa, Portugal",
   founded: 2022,
 } as const;
 

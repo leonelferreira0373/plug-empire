@@ -17,13 +17,13 @@ export default function PrivacidadePage() {
           body: {
             pt: (
               <L>
-                Plug Empire é uma marca de streetwear premium baseada em {BRAND.address}.
+                Plug Empire é uma marca portuguesa de streetwear premium, com sede em {BRAND.address}.
                 Contacto: <a href={`mailto:${BRAND.email}`} className="text-gold underline">{BRAND.email}</a>.
               </L>
             ),
             en: (
               <L>
-                Plug Empire is a premium streetwear brand based in {BRAND.address}.
+                Plug Empire is a Portuguese premium streetwear brand based in {BRAND.address}.
                 Contact: <a href={`mailto:${BRAND.email}`} className="text-gold underline">{BRAND.email}</a>.
               </L>
             ),

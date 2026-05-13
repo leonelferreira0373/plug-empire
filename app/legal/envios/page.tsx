@@ -7,23 +7,23 @@ export default function EnviosPage() {
     <LegalPage
       title={{ pt: "Política de Envio", en: "Shipping Policy" }}
       intro={{
-        pt: "Entregamos em toda Angola. Confirma-se sempre prazo e valor antes do pagamento.",
-        en: "We deliver across Angola. Shipping cost and time are confirmed before payment.",
+        pt: "Entregamos em todo o Continente, Açores, Madeira e União Europeia. Confirma-se sempre prazo e valor antes do pagamento.",
+        en: "We deliver across mainland Portugal, Azores, Madeira and the European Union. Shipping cost and time are confirmed before payment.",
       }}
       sections={[
         {
-          heading: { pt: "1. Luanda", en: "1. Luanda" },
+          heading: { pt: "1. Lisboa & Porto", en: "1. Lisbon & Porto" },
           body: {
-            pt: <L>Entrega em mão no mesmo dia ou no dia seguinte para pedidos confirmados até às 16h. Encomendas até 5.000 AOA têm taxa fixa de entrega; acima desse valor o envio é gratuito.</L>,
-            en: <L>Same-day or next-day hand delivery for orders confirmed by 4 PM. Orders under 5,000 AOA carry a flat delivery fee; above that, shipping is free.</L>,
+            pt: <L>Entrega em mão ou via courier no próprio dia ou dia seguinte, para pedidos confirmados até às 16h. Envio gratuito para encomendas acima de €60.</L>,
+            en: <L>Same-day or next-day hand or courier delivery for orders confirmed by 4 PM. Free shipping on orders over €60.</L>,
           },
         },
         {
-          heading: { pt: "2. Outras províncias", en: "2. Other provinces" },
+          heading: { pt: "2. Resto de Portugal", en: "2. Rest of Portugal" },
           body: {
             pt: (
               <>
-                <L>Entrega via parceiros de transporte (2 a 5 dias úteis). Preço calculado conforme:</L>
+                <L>Entrega via CTT Expresso ou DPD (2 a 4 dias úteis). Açores e Madeira: 3 a 6 dias úteis. Preço calculado conforme:</L>
                 <LList
                   items={[
                     "Destino",
@@ -35,7 +35,7 @@ export default function EnviosPage() {
             ),
             en: (
               <>
-                <L>Delivered via courier partners (2 to 5 business days). Pricing depends on:</L>
+                <L>Delivered via CTT Expresso or DPD (2 to 4 business days). Azores and Madeira: 3 to 6 business days. Pricing depends on:</L>
                 <LList
                   items={[
                     "Destination",
@@ -48,10 +48,10 @@ export default function EnviosPage() {
           },
         },
         {
-          heading: { pt: "3. Envios internacionais", en: "3. International" },
+          heading: { pt: "3. União Europeia & resto do mundo", en: "3. EU & worldwide" },
           body: {
-            pt: <L>Aceitamos pedidos internacionais sob consulta. Prazo e custo são confirmados caso a caso. As taxas alfandegárias do país de destino são da responsabilidade do destinatário.</L>,
-            en: <L>International orders are accepted on request. Time and cost are confirmed case by case. Destination customs duties are the recipient's responsibility.</L>,
+            pt: <L>União Europeia: 3 a 7 dias úteis, IVA português incluído. Para destinos fora da UE: aceitamos pedidos sob consulta. As taxas alfandegárias do país de destino são da responsabilidade do destinatário.</L>,
+            en: <L>European Union: 3 to 7 business days, Portuguese VAT included. For destinations outside the EU: orders accepted on request. Destination customs duties are the recipient's responsibility.</L>,
           },
         },
         {

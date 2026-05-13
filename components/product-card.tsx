@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "./providers";
 import { dict } from "@/lib/i18n";
-import { formatAOA } from "@/lib/utils";
+import { formatEUR } from "@/lib/utils";
 import type { Product } from "@/lib/products";
 
 export function ProductCard({ product }: { product: Product }) {
@@ -58,11 +58,11 @@ export function ProductCard({ product }: { product: Product }) {
         </h3>
         <div className="flex items-baseline gap-2">
           <span className="font-display text-base font-bold tracking-wide text-foreground">
-            {formatAOA(product.price)}
+            {formatEUR(product.price)}
           </span>
           {onSale && (
             <span className="text-xs text-muted-foreground line-through">
-              {formatAOA(product.oldPrice!)}
+              {formatEUR(product.oldPrice!)}
             </span>
           )}
         </div>

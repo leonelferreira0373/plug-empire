@@ -34,8 +34,8 @@ export function Header() {
       <div className="border-b border-border bg-black text-[10px] font-medium tracking-[0.22em] text-gold/90 uppercase">
         <div className="mx-auto max-w-7xl px-4 py-2 text-center">
           {lang === "pt"
-            ? "Envio para toda Angola · Pagamento seguro via WhatsApp"
-            : "Shipping across Angola · Secure checkout via WhatsApp"}
+            ? "Envio para toda Portugal · Pagamento seguro via WhatsApp"
+            : "Shipping across Portugal · Secure checkout via WhatsApp"}
         </div>
       </div>
       <header

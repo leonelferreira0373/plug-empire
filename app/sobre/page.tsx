@@ -29,15 +29,15 @@ export default function SobrePage() {
         <div className="mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 sm:py-32">
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
             <Sparkles size={14} />
-            EST. {BRAND.founded} · LUANDA
+            EST. {BRAND.founded} · PORTUGAL
           </div>
           <h1 className="mt-6 font-display text-5xl tracking-tight sm:text-7xl">
             <span className="block">{t.about_title}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
             {lang === "pt"
-              ? "Plug Empire nasceu em Luanda como uma promessa simples: vestir os que constroem o seu próprio nome — com peças que sentem, no toque e no detalhe, o orgulho de quem as cria."
-              : "Plug Empire was born in Luanda as a simple promise: dressing those building their own name — with pieces that carry, in feel and detail, the pride of those who make them."}
+              ? "Plug Empire nasceu em Portugal como uma promessa simples: vestir os que constroem o seu próprio nome — com peças que sentem, no toque e no detalhe, o orgulho de quem as cria."
+              : "Plug Empire was born in Portugal as a simple promise: dressing those building their own name — with pieces that carry, in feel and detail, the pride of those who make them."}
           </p>
         </div>
       </section>
@@ -62,8 +62,8 @@ export default function SobrePage() {
             {
               t: { pt: "Origem", en: "Origin" },
               d: {
-                pt: "Desenhado e curado em Luanda. As peças são produzidas com fornecedores parceiros nos EUA, Emirados, Turquia e Namíbia, sob padrões rigorosos de qualidade.",
-                en: "Designed and curated in Luanda. Pieces are produced with partner suppliers in the USA, UAE, Turkey and Namibia under strict quality standards.",
+                pt: "Desenhado e curado em Portugal. As peças são produzidas com fornecedores parceiros nos EUA, Emirados, Turquia e Namíbia, sob padrões rigorosos de qualidade.",
+                en: "Designed and curated in Portugal. Pieces are produced with partner suppliers in the USA, UAE, Turkey and Namibia under strict quality standards.",
               },
             },
             {

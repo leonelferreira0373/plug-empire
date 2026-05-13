@@ -107,7 +107,7 @@ export default function ContactoPage() {
         <span>
           {lang === "pt"
             ? `Operação: ${BRAND.address}. Sourcing internacional em USA, Emirados, Turquia e Namíbia.`
-            : `Operation: ${BRAND.address}. International sourcing across USA, UAE, Turkey and Namibia.`}
+            : `Based in ${BRAND.address}. International sourcing across USA, UAE, Turkey and Namibia.`}
         </span>
       </div>
 
@@ -126,8 +126,8 @@ export default function ContactoPage() {
           </div>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
             {lang === "pt"
-              ? "Respondemos via WhatsApp todos os dias, das 09h às 22h (hora de Luanda). Para encomendas urgentes, mencione na primeira mensagem."
-              : "We reply on WhatsApp every day, 9 AM to 10 PM (Luanda time). For urgent orders, mention it in your first message."}
+              ? "Respondemos via WhatsApp todos os dias, das 09h às 22h (hora de Lisboa). Para encomendas urgentes, mencione na primeira mensagem."
+              : "We reply on WhatsApp every day, 9 AM to 10 PM (Lisbon time). For urgent orders, mention it in your first message."}
           </p>
         </div>
       </div>

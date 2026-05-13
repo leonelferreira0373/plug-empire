@@ -15,8 +15,8 @@ export default function TermosPage() {
         {
           heading: { pt: "1. A marca", en: "1. The brand" },
           body: {
-            pt: <L>Plug Empire é uma marca de streetwear premium, com operação principal em {BRAND.address}. Email: {BRAND.email}.</L>,
-            en: <L>Plug Empire is a premium streetwear brand operating primarily out of {BRAND.address}. Email: {BRAND.email}.</L>,
+            pt: <L>Plug Empire é uma marca portuguesa de streetwear premium, com sede em {BRAND.address}. Email: {BRAND.email}.</L>,
+            en: <L>Plug Empire is a Portuguese premium streetwear brand based in {BRAND.address}. Email: {BRAND.email}.</L>,
           },
         },
         {
@@ -62,15 +62,16 @@ export default function TermosPage() {
           body: {
             pt: (
               <L>
-                Todos os preços estão em Kwanzas (AOA), salvo indicação em contrário. O pagamento
-                pode ser feito por transferência bancária, multicaixa ou em mão na entrega,
-                conforme acordado em conversa.
+                Todos os preços estão em Euros (€), salvo indicação em contrário, e incluem IVA à
+                taxa em vigor. O pagamento pode ser feito por MB WAY, transferência bancária,
+                multibanco, ou em mão na entrega — conforme acordado em conversa.
               </L>
             ),
             en: (
               <L>
-                All prices are in Kwanzas (AOA) unless stated otherwise. Payment can be made via
-                bank transfer, multicaixa, or cash on delivery — as agreed in conversation.
+                All prices are in Euros (€) unless stated otherwise, and include VAT at the
+                applicable rate. Payment can be made via MB WAY, bank transfer, ATM reference,
+                or cash on delivery — as agreed in conversation.
               </L>
             ),
           },
@@ -92,8 +93,8 @@ export default function TermosPage() {
         {
           heading: { pt: "6. Lei aplicável", en: "6. Governing law" },
           body: {
-            pt: <L>Estes termos são regidos pela lei angolana. Qualquer litígio será resolvido pelos tribunais competentes de Luanda.</L>,
-            en: <L>These terms are governed by Angolan law. Any dispute shall be resolved by the competent courts of Luanda.</L>,
+            pt: <L>Estes termos são regidos pela lei portuguesa. Qualquer litígio será resolvido pelos tribunais competentes de Lisboa.</L>,
+            en: <L>These terms are governed by Portuguese law. Any dispute shall be resolved by the competent courts of Lisbon.</L>,
           },
         },
       ]}
