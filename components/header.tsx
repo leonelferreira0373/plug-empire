@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { BrandMark } from "./brand-mark";
 import { LangToggle, ThemeToggle } from "./toggles";
@@ -13,8 +14,12 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const { lang } = useLang();
   const t = dict[lang];
+  const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  // Hide header on Studio
+  if (pathname?.startsWith("/studio")) return null;
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);

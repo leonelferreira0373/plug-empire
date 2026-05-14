@@ -1,3 +1,9 @@
+// Product data layer.
+// Fetches from Sanity when configured; falls back to the hardcoded catalog otherwise.
+// This keeps the site working before/after the CMS migration.
+
+import { isSanityConfigured, sanityClient, imgUrl } from "./sanity";
+
 export type Category = "tocas" | "balaclavas" | "fatos" | "carteiras" | "joalharia";
 
 export type Product = {
@@ -14,16 +20,15 @@ export type Product = {
   colors?: { name: string; hex: string }[];
   stock: number;
   bestseller?: boolean;
-  related?: string[]; // slugs
+  related?: string[];
 };
 
-export const PRODUCTS: Product[] = [
+// -------- Hardcoded fallback (used until Sanity is wired) ----------
+
+const FALLBACK: Product[] = [
   {
     slug: "toca-bee-preta",
-    name: {
-      pt: "Toca Bee — Preta",
-      en: "Bee Beanie — Black",
-    },
+    name: { pt: "Toca Bee — Preta", en: "Bee Beanie — Black" },
     category: "tocas",
     price: 34.9,
     oldPrice: 49.9,
@@ -66,34 +71,18 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "toca-bee-branca",
-    name: {
-      pt: "Toca Bee — Branca",
-      en: "Bee Beanie — White",
-    },
+    name: { pt: "Toca Bee — Branca", en: "Bee Beanie — White" },
     category: "tocas",
     price: 34.9,
     description: {
-      pt: "Versão branca da toca assinatura. Limpa, leve, com o bordado da abelha em amarelo dourado. Perfeita para os tons mais claros do guarda-roupa.",
-      en: "White version of the signature beanie. Clean, lightweight, with the bee embroidered in golden yellow. Perfect for the brighter side of the wardrobe.",
+      pt: "Versão branca da toca assinatura. Limpa, leve, com o bordado da abelha em amarelo dourado.",
+      en: "White version of the signature beanie. Clean, lightweight, with the bee embroidered in golden yellow.",
     },
     features: {
-      pt: [
-        "Tecido respirável de alta densidade",
-        "Bordado da abelha em amarelo dourado",
-        "Forro interno suave",
-        "Ajuste universal",
-      ],
-      en: [
-        "High-density breathable fabric",
-        "Bee logo in golden yellow",
-        "Soft inner lining",
-        "Universal fit",
-      ],
+      pt: ["Tecido respirável", "Bordado da abelha em dourado", "Forro suave", "Ajuste universal"],
+      en: ["Breathable fabric", "Bee logo in golden yellow", "Soft inner lining", "Universal fit"],
     },
-    images: [
-      "/products/beanie-white-1.jpg",
-      "/products/beanie-group-2.jpg",
-    ],
+    images: ["/products/beanie-white-1.jpg", "/products/beanie-group-2.jpg"],
     sizes: ["Único"],
     colors: [
       { name: "Branco", hex: "#fafafa" },
@@ -104,30 +93,17 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "toca-bee-amarela",
-    name: {
-      pt: "Toca Bee — Amarela",
-      en: "Bee Beanie — Yellow",
-    },
+    name: { pt: "Toca Bee — Amarela", en: "Bee Beanie — Yellow" },
     category: "tocas",
     price: 34.9,
     badge: { pt: "Edição limitada", en: "Limited drop" },
     description: {
-      pt: "A toca em amarelo abelha — uma declaração ousada com o lettering Stravages preto. Edição limitada da temporada.",
-      en: "The bee-yellow beanie — a bold statement with the Stravages lettering in black. Limited seasonal drop.",
+      pt: "A toca em amarelo abelha — uma declaração ousada com o lettering Stravages preto.",
+      en: "The bee-yellow beanie — a bold statement with the Stravages lettering in black.",
     },
     features: {
-      pt: [
-        "Amarelo abelha exclusivo da casa",
-        "Lettering Stravages em preto",
-        "Algodão escovado",
-        "Edição de produção limitada",
-      ],
-      en: [
-        "House-exclusive bee-yellow",
-        "Stravages lettering in black",
-        "Brushed cotton",
-        "Limited production run",
-      ],
+      pt: ["Amarelo abelha", "Lettering Stravages preto", "Algodão escovado", "Produção limitada"],
+      en: ["House bee-yellow", "Stravages lettering in black", "Brushed cotton", "Limited run"],
     },
     images: ["/products/beanie-yellow-1.jpg", "/products/beanie-yellow-2.jpg"],
     sizes: ["Único"],
@@ -140,29 +116,16 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "toca-bee-rosa",
-    name: {
-      pt: "Toca Bee — Rosa",
-      en: "Bee Beanie — Pink",
-    },
+    name: { pt: "Toca Bee — Rosa", en: "Bee Beanie — Pink" },
     category: "tocas",
     price: 34.9,
     description: {
-      pt: "Rosa pó com o lettering Stravages a destacar-se. Suave, feminina, sem perder o atitude da casa.",
-      en: "Powder pink with the Stravages lettering set against it. Soft, feminine, without losing the house's attitude.",
+      pt: "Rosa pó com o lettering Stravages a destacar-se.",
+      en: "Powder pink with the Stravages lettering set against it.",
     },
     features: {
-      pt: [
-        "Rosa pó suave",
-        "Lettering Stravages em branco",
-        "Forro de cetim",
-        "Ajuste relaxado",
-      ],
-      en: [
-        "Soft powder pink",
-        "Stravages lettering in white",
-        "Satin lining",
-        "Relaxed fit",
-      ],
+      pt: ["Rosa pó suave", "Lettering Stravages branco", "Forro de cetim", "Ajuste relaxado"],
+      en: ["Soft powder pink", "Stravages lettering in white", "Satin lining", "Relaxed fit"],
     },
     images: [
       "/products/beanie-pink-1.jpg",
@@ -180,30 +143,17 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "balaclava-bee",
-    name: {
-      pt: "Balaclava Bee",
-      en: "Bee Balaclava",
-    },
+    name: { pt: "Balaclava Bee", en: "Bee Balaclava" },
     category: "balaclavas",
     price: 54.9,
     badge: { pt: "Novo", en: "New" },
     description: {
-      pt: "Balaclava em tecido técnico preto, com a abelha bordada em amarelo dourado. Pensada para os dias frios — proteção total sem perder o estilo.",
-      en: "Black technical-fabric balaclava with the bee embroidered in golden yellow. Built for cold days — full protection without losing the style.",
+      pt: "Balaclava em tecido técnico preto, com a abelha bordada em amarelo dourado.",
+      en: "Black technical-fabric balaclava with the bee embroidered in golden yellow.",
     },
     features: {
-      pt: [
-        "Tecido técnico respirável",
-        "Cobertura total — cabeça e pescoço",
-        "Bordado da abelha em amarelo",
-        "Costuras reforçadas",
-      ],
-      en: [
-        "Breathable technical fabric",
-        "Full head and neck coverage",
-        "Bee embroidery in yellow",
-        "Reinforced stitching",
-      ],
+      pt: ["Tecido técnico", "Cobertura total", "Bordado da abelha", "Costuras reforçadas"],
+      en: ["Technical fabric", "Full coverage", "Bee embroidery", "Reinforced stitching"],
     },
     images: ["/products/balaclava-1.jpg", "/products/balaclava-2.png"],
     sizes: ["Único"],
@@ -213,31 +163,18 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "fato-empire-amarelo",
-    name: {
-      pt: "Fato Empire — Amarelo",
-      en: "Empire Tracksuit — Yellow",
-    },
+    name: { pt: "Fato Empire — Amarelo", en: "Empire Tracksuit — Yellow" },
     category: "fatos",
     price: 179.9,
     oldPrice: 219.9,
     badge: { pt: "Conjunto", en: "Full set" },
     description: {
-      pt: "Conjunto completo: hoodie zip + calça de fato em amarelo abelha, com patches bordados e detalhes em vermelho. Inclui a toca a condizer. Streetwear premium feito para virar cabeças.",
-      en: "Full set: zip hoodie + tracksuit pants in bee-yellow, with embroidered patches and red details. Matching beanie included. Premium streetwear made to turn heads.",
+      pt: "Conjunto completo: hoodie zip + calça de fato em amarelo abelha, com patches bordados.",
+      en: "Full set: zip hoodie + tracksuit pants in bee-yellow with embroidered patches.",
     },
     features: {
-      pt: [
-        "Hoodie com fecho metálico dourado",
-        "Calça com aplicações bordadas",
-        "Toca a condizer incluída",
-        "Algodão de gramagem pesada",
-      ],
-      en: [
-        "Hoodie with gold metal zipper",
-        "Pants with embroidered appliqués",
-        "Matching beanie included",
-        "Heavyweight cotton",
-      ],
+      pt: ["Fecho dourado", "Aplicações bordadas", "Toca incluída", "Gramagem pesada"],
+      en: ["Gold zipper", "Embroidered appliqués", "Beanie included", "Heavyweight cotton"],
     },
     images: [
       "/products/tracksuit-yellow-1.jpg",
@@ -252,30 +189,17 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "carteira-stravages",
-    name: {
-      pt: "Carteira Stravages — Couro",
-      en: "Stravages Wallet — Leather",
-    },
+    name: { pt: "Carteira Stravages — Couro", en: "Stravages Wallet — Leather" },
     category: "carteiras",
     price: 89.9,
     badge: { pt: "Premium", en: "Premium" },
     description: {
-      pt: "Carteira em couro preto com a abelha e o lettering Stravages gravados a quente em folha dourada. Compartimentos para 6 cartões, fenda para notas e bolso para moedas. A peça mais discreta — e mais reconhecível.",
-      en: "Black leather wallet with the bee and Stravages lettering hot-stamped in gold foil. Six card slots, note compartment and coin pocket. The most discreet piece — and the most recognisable.",
+      pt: "Carteira em couro preto com a abelha e o lettering Stravages gravados a quente em folha dourada.",
+      en: "Black leather wallet with the bee and Stravages lettering hot-stamped in gold foil.",
     },
     features: {
-      pt: [
-        "Couro genuíno preto",
-        "Gravação em folha dourada real",
-        "6 compartimentos para cartões",
-        "Caixa premium incluída",
-      ],
-      en: [
-        "Genuine black leather",
-        "Real gold-foil hot-stamp",
-        "6 card slots",
-        "Premium gift box included",
-      ],
+      pt: ["Couro genuíno", "Folha dourada", "6 compartimentos", "Caixa premium"],
+      en: ["Genuine leather", "Gold foil hot-stamp", "6 card slots", "Premium box"],
     },
     images: ["/products/wallet-1.png"],
     sizes: ["Único"],
@@ -286,15 +210,126 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export function getProduct(slug: string): Product | undefined {
-  return PRODUCTS.find((p) => p.slug === slug);
+// -------- Sanity → typed Product mapper --------
+
+type SanityProduct = {
+  slug?: { current?: string };
+  namePT?: string;
+  nameEN?: string;
+  category?: Category;
+  price?: number;
+  oldPrice?: number;
+  badgePT?: string;
+  badgeEN?: string;
+  descriptionPT?: string;
+  descriptionEN?: string;
+  featuresPT?: string[];
+  featuresEN?: string[];
+  images?: unknown[];
+  sizes?: string[];
+  colors?: { name: string; hex: string }[];
+  stock?: number;
+  bestseller?: boolean;
+  related?: { slug?: { current?: string } }[];
+};
+
+function mapFromSanity(doc: SanityProduct): Product | null {
+  const slug = doc.slug?.current;
+  if (!slug) return null;
+  return {
+    slug,
+    name: { pt: doc.namePT ?? "", en: doc.nameEN ?? doc.namePT ?? "" },
+    category: (doc.category ?? "tocas") as Category,
+    price: doc.price ?? 0,
+    oldPrice: doc.oldPrice,
+    badge:
+      doc.badgePT || doc.badgeEN
+        ? { pt: doc.badgePT ?? "", en: doc.badgeEN ?? doc.badgePT ?? "" }
+        : undefined,
+    description: {
+      pt: doc.descriptionPT ?? "",
+      en: doc.descriptionEN ?? doc.descriptionPT ?? "",
+    },
+    features: {
+      pt: doc.featuresPT ?? [],
+      en: doc.featuresEN?.length ? doc.featuresEN : (doc.featuresPT ?? []),
+    },
+    images: (doc.images ?? [])
+      .map((img) => imgUrl(img as Parameters<typeof imgUrl>[0], 1400))
+      .filter(Boolean),
+    sizes: doc.sizes,
+    colors: doc.colors,
+    stock: doc.stock ?? 0,
+    bestseller: doc.bestseller,
+    related: doc.related?.map((r) => r.slug?.current ?? "").filter(Boolean),
+  };
 }
 
-export function getRelated(slugs: string[] | undefined): Product[] {
-  if (!slugs) return [];
-  return slugs
-    .map((s) => PRODUCTS.find((p) => p.slug === s))
-    .filter((p): p is Product => Boolean(p));
+// -------- Public API (async; works in Server Components) ----------
+
+const ALL_QUERY = `*[_type == "product"] | order(order asc) {
+  "slug": slug,
+  namePT, nameEN, category, price, oldPrice,
+  badgePT, badgeEN,
+  descriptionPT, descriptionEN,
+  featuresPT, featuresEN,
+  images,
+  sizes, colors,
+  stock, bestseller,
+  "related": related[]->{ "slug": slug }
+}`;
+
+const ONE_QUERY = `*[_type == "product" && slug.current == $slug][0] {
+  "slug": slug,
+  namePT, nameEN, category, price, oldPrice,
+  badgePT, badgeEN,
+  descriptionPT, descriptionEN,
+  featuresPT, featuresEN,
+  images,
+  sizes, colors,
+  stock, bestseller,
+  "related": related[]->{ "slug": slug }
+}`;
+
+export async function getAllProducts(): Promise<Product[]> {
+  if (!isSanityConfigured) return FALLBACK;
+  try {
+    const docs = await sanityClient().fetch<SanityProduct[]>(ALL_QUERY, {}, { next: { revalidate: 60 } });
+    const mapped = docs.map(mapFromSanity).filter((p): p is Product => Boolean(p));
+    return mapped.length > 0 ? mapped : FALLBACK;
+  } catch (err) {
+    console.error("[products] sanity fetch failed, using fallback", err);
+    return FALLBACK;
+  }
+}
+
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+  if (!isSanityConfigured) {
+    return FALLBACK.find((p) => p.slug === slug) ?? null;
+  }
+  try {
+    const doc = await sanityClient().fetch<SanityProduct | null>(
+      ONE_QUERY,
+      { slug },
+      { next: { revalidate: 60 } },
+    );
+    if (!doc) return FALLBACK.find((p) => p.slug === slug) ?? null;
+    return mapFromSanity(doc);
+  } catch (err) {
+    console.error("[products] sanity fetch one failed, using fallback", err);
+    return FALLBACK.find((p) => p.slug === slug) ?? null;
+  }
+}
+
+export async function getProductSlugs(): Promise<string[]> {
+  const all = await getAllProducts();
+  return all.map((p) => p.slug);
+}
+
+export async function getRelated(slugs: string[] | undefined): Promise<Product[]> {
+  if (!slugs?.length) return [];
+  const all = await getAllProducts();
+  return slugs.map((s) => all.find((p) => p.slug === s)).filter((p): p is Product => Boolean(p));
 }
 
 export const CATEGORIES: { key: Category; label: { pt: string; en: string } }[] = [
@@ -304,3 +339,7 @@ export const CATEGORIES: { key: Category; label: { pt: string; en: string } }[] 
   { key: "carteiras", label: { pt: "Carteiras", en: "Wallets" } },
   { key: "joalharia", label: { pt: "Joalharia", en: "Jewelry" } },
 ];
+
+// Synchronous access to fallback for client components that already had the data.
+// (Used by checkout summary, cart icon — non-critical paths.)
+export const PRODUCTS_FALLBACK = FALLBACK;

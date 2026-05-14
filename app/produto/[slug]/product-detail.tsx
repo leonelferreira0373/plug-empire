@@ -17,7 +17,7 @@ import { useLang } from "@/components/providers";
 import { dict } from "@/lib/i18n";
 import { cn, formatEUR } from "@/lib/utils";
 import { useCart } from "@/lib/cart";
-import { whatsappUrl } from "@/lib/config";
+import { useRouter } from "next/navigation";
 import { ProductCard } from "@/components/product-card";
 import type { Product } from "@/lib/products";
 
@@ -31,6 +31,7 @@ export function ProductDetail({
   const { lang } = useLang();
   const t = dict[lang];
   const add = useCart((s) => s.add);
+  const router = useRouter();
 
   const [activeImage, setActiveImage] = React.useState(0);
   const [size, setSize] = React.useState(product.sizes?.[0] ?? "");
@@ -55,17 +56,16 @@ export function ProductDetail({
   };
 
   const handleBuyNow = () => {
-    const lines = [
-      lang === "pt" ? "Olá! Quero comprar:" : "Hi! I want to buy:",
-      "",
-      `• ${product.name[lang]} ${size ? `· ${size}` : ""} ${color ? `· ${color}` : ""}`,
-      `  ${formatEUR(product.price)} × ${qty} = ${formatEUR(product.price * qty)}`,
-      "",
-      lang === "pt"
-        ? "Podem confirmar disponibilidade e envio?"
-        : "Can you confirm availability and shipping?",
-    ];
-    window.open(whatsappUrl(lines.join("\n")), "_blank", "noopener,noreferrer");
+    add({
+      slug: product.slug,
+      name: product.name[lang],
+      price: product.price,
+      image: product.images[0],
+      size,
+      color,
+      qty,
+    });
+    router.push("/checkout");
   };
 
   return (

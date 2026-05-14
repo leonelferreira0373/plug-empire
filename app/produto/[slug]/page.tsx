@@ -1,10 +1,13 @@
 import { notFound } from "next/navigation";
-import { PRODUCTS, getProduct, getRelated } from "@/lib/products";
+import { getProductBySlug, getProductSlugs, getRelated } from "@/lib/products";
 import { ProductDetail } from "./product-detail";
 
-export function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const slugs = await getProductSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
+
+export const dynamicParams = true;
 
 export default async function ProductPage({
   params,
@@ -12,9 +15,9 @@ export default async function ProductPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProductBySlug(slug);
   if (!product) notFound();
-  const related = getRelated(product.related);
+  const related = await getRelated(product.related);
   return <ProductDetail product={product} related={related} />;
 }
 
@@ -24,7 +27,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProductBySlug(slug);
   if (!product) return { title: "Plug Empire" };
   return {
     title: product.name.pt,
@@ -32,7 +35,7 @@ export async function generateMetadata({
     openGraph: {
       title: product.name.pt,
       description: product.description.pt,
-      images: [product.images[0]],
+      images: product.images[0] ? [product.images[0]] : [],
     },
   };
 }

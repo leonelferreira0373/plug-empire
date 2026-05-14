@@ -8,7 +8,6 @@ import { useCart, cartKey } from "@/lib/cart";
 import { useLang } from "@/components/providers";
 import { dict } from "@/lib/i18n";
 import { cn, formatEUR } from "@/lib/utils";
-import { whatsappUrl } from "@/lib/config";
 
 export default function CartPage() {
   const { lang } = useLang();
@@ -23,26 +22,6 @@ export default function CartPage() {
   React.useEffect(() => setMounted(true), []);
 
   const subtotal = items.reduce((acc, i) => acc + i.price * i.qty, 0);
-
-  const checkout = () => {
-    const lines = [
-      lang === "pt"
-        ? "Olá! Quero fazer este pedido:"
-        : "Hi! I'd like to place this order:",
-      "",
-      ...items.map(
-        (i) =>
-          `• ${i.name}${i.size ? ` · ${i.size}` : ""}${i.color ? ` · ${i.color}` : ""} — ${i.qty}× ${formatEUR(i.price)} = ${formatEUR(i.price * i.qty)}`,
-      ),
-      "",
-      `${t.cart_subtotal}: ${formatEUR(subtotal)}`,
-      "",
-      lang === "pt"
-        ? "Podem confirmar disponibilidade, envio e total final?"
-        : "Can you confirm availability, shipping and final total?",
-    ];
-    window.open(whatsappUrl(lines.join("\n")), "_blank", "noopener,noreferrer");
-  };
 
   if (!mounted) {
     return (
@@ -192,14 +171,13 @@ export default function CartPage() {
               </dd>
             </div>
           </dl>
-          <button
-            type="button"
-            onClick={checkout}
+          <Link
+            href="/checkout"
             className="mt-6 flex w-full items-center justify-center gap-2 rounded-full btn-gold-shine px-6 py-4 text-sm font-bold uppercase tracking-widest"
           >
-            {t.cart_checkout}
+            {lang === "pt" ? "Finalizar compra" : "Checkout"}
             <ArrowRight size={16} />
-          </button>
+          </Link>
           <Link
             href="/loja"
             className="mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-medium text-foreground transition-colors hover:border-gold/60 hover:text-gold"

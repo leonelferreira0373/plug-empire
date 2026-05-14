@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { InstagramIcon } from "./icons";
 import { useLang } from "./providers";
@@ -12,7 +13,10 @@ import { BRAND, whatsappUrl } from "@/lib/config";
 export function Footer() {
   const { lang } = useLang();
   const t = dict[lang];
+  const pathname = usePathname();
   const year = new Date().getFullYear();
+
+  if (pathname?.startsWith("/studio")) return null;
 
   return (
     <footer className="mt-32 border-t border-border bg-black text-foreground">

@@ -52,7 +52,7 @@ export const dict = {
     cart_shipping: "Envio",
     cart_shipping_calc: "Calculado no WhatsApp",
     cart_total: "Total",
-    cart_checkout: "Finalizar via WhatsApp",
+    cart_checkout: "Finalizar compra",
     cart_remove: "Remover",
     cart_continue: "Continuar a comprar",
     // Footer
@@ -129,7 +129,7 @@ export const dict = {
     cart_shipping: "Shipping",
     cart_shipping_calc: "Calculated on WhatsApp",
     cart_total: "Total",
-    cart_checkout: "Checkout via WhatsApp",
+    cart_checkout: "Checkout",
     cart_remove: "Remove",
     cart_continue: "Continue shopping",
     footer_tagline: "Every dream is possible. You just have to believe.",
