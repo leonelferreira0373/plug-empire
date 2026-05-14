@@ -247,11 +247,11 @@ async function upsertProduct(p) {
   if (!imageRefs || imageRefs.length === 0) {
     console.log(`  uploading ${p.images.length} images for ${p.slug}...`);
     imageRefs = [];
-    for (const img of p.images) {
-      const assetId = await uploadImage(img);
+    for (let i = 0; i < p.images.length; i++) {
+      const assetId = await uploadImage(p.images[i]);
       imageRefs.push({
         _type: "image",
-        _key: assetId.slice(-8),
+        _key: `img-${i}-${Math.random().toString(36).slice(2, 10)}`,
         asset: { _type: "reference", _ref: assetId },
       });
     }

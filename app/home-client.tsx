@@ -6,12 +6,39 @@ import { ArrowRight, Sparkles, Truck, ShieldCheck, BadgeCheck } from "lucide-rea
 import { useLang } from "@/components/providers";
 import { dict } from "@/lib/i18n";
 import type { Product } from "@/lib/products";
+import type { HomeContent } from "@/lib/site-content";
 import { ProductCard } from "@/components/product-card";
 import { formatEUR } from "@/lib/utils";
 
-export function HomeClient({ products }: { products: Product[] }) {
+export function HomeClient({
+  products,
+  home,
+}: {
+  products: Product[];
+  home: HomeContent | null;
+}) {
   const { lang } = useLang();
   const t = dict[lang];
+
+  // Sanity overrides with fallbacks to i18n dict
+  const heroEyebrow =
+    (lang === "pt" ? home?.heroEyebrowPT : home?.heroEyebrowEN) ?? t.hero_eyebrow;
+  const heroTitle =
+    (lang === "pt" ? home?.heroTitlePT : home?.heroTitleEN) ??
+    `${t.hero_title_1} ${t.hero_title_2}`;
+  const heroSubtitle =
+    (lang === "pt" ? home?.heroSubtitlePT : home?.heroSubtitleEN) ??
+    t.hero_subtitle;
+  const storyQuote =
+    (lang === "pt" ? home?.storyQuotePT : home?.storyQuoteEN) ??
+    (lang === "pt"
+      ? "Todo o sonho é possível… basta acreditar."
+      : "Every dream is possible… you just have to believe.");
+  const storyBody =
+    (lang === "pt" ? home?.storyBodyPT : home?.storyBodyEN) ??
+    (lang === "pt"
+      ? "Marca portuguesa. Vestimos quem constrói o seu próprio nome. Cada peça do Plug Empire — toca, balaclava, fato, carteira — é desenhada e produzida com o mesmo padrão: qualidade premium, identidade clara, sem atalhos."
+      : "Portuguese brand. We dress those building their own name. Every Plug Empire piece — beanie, balaclava, tracksuit, wallet — is designed and produced to the same standard: premium quality, clear identity, no shortcuts.");
 
   const featured =
     products.find((p) => p.slug === "toca-bee-preta") ?? products[0];
@@ -38,7 +65,11 @@ export function HomeClient({ products }: { products: Product[] }) {
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image
-            src={featured.images[0] ?? "/products/beanie-black-pair.jpg"}
+            src={
+              home?.heroImage ??
+              featured.images[0] ??
+              "/products/beanie-black-pair.jpg"
+            }
             alt=""
             fill
             priority
@@ -53,14 +84,35 @@ export function HomeClient({ products }: { products: Product[] }) {
           <div className="flex flex-col justify-center">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
               <Sparkles size={14} />
-              {t.hero_eyebrow}
+              {heroEyebrow}
             </div>
             <h1 className="mt-6 font-display text-5xl leading-[0.95] tracking-tight sm:text-7xl md:text-8xl">
-              <span className="block text-foreground">{t.hero_title_1}</span>
-              <span className="block gold-gradient">{t.hero_title_2}</span>
+              {(() => {
+                // Split the title at the last word for the gold gradient effect when from Sanity (single string).
+                if (home?.heroTitlePT || home?.heroTitleEN) {
+                  const parts = heroTitle.split(/\s+/);
+                  if (parts.length >= 2) {
+                    const last = parts.slice(-1).join(" ");
+                    const first = parts.slice(0, -1).join(" ");
+                    return (
+                      <>
+                        <span className="block text-foreground">{first}</span>
+                        <span className="block gold-gradient">{last}</span>
+                      </>
+                    );
+                  }
+                  return <span className="block gold-gradient">{heroTitle}</span>;
+                }
+                return (
+                  <>
+                    <span className="block text-foreground">{t.hero_title_1}</span>
+                    <span className="block gold-gradient">{t.hero_title_2}</span>
+                  </>
+                );
+              })()}
             </h1>
             <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {t.hero_subtitle}
+              {heroSubtitle}
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
@@ -256,12 +308,10 @@ export function HomeClient({ products }: { products: Product[] }) {
             الله · {lang === "pt" ? "A nossa marca" : "Our brand"}
           </div>
           <blockquote className="mt-6 font-display text-3xl leading-[1.15] tracking-tight text-white sm:text-5xl">
-            &ldquo;Todo o sonho é possível… <span className="gold-gradient">basta acreditar.</span>&rdquo;
+            &ldquo;<span className="gold-gradient">{storyQuote}</span>&rdquo;
           </blockquote>
           <p className="mt-8 text-sm leading-relaxed text-white/70 sm:text-base">
-            {lang === "pt"
-              ? "Marca portuguesa. Vestimos quem constrói o seu próprio nome. Cada peça do Plug Empire — toca, balaclava, fato, carteira — é desenhada e produzida com o mesmo padrão: qualidade premium, identidade clara, sem atalhos."
-              : "Portuguese brand. We dress those building their own name. Every Plug Empire piece — beanie, balaclava, tracksuit, wallet — is designed and produced to the same standard: premium quality, clear identity, no shortcuts."}
+            {storyBody}
           </p>
           <Link
             href="/sobre"
