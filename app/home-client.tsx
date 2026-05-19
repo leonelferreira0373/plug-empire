@@ -20,8 +20,6 @@ export function HomeClient({
   const t = dict[lang];
 
   // Sanity-driven copy with editorial defaults
-  const heroEyebrow =
-    (lang === "pt" ? home?.heroEyebrowPT : home?.heroEyebrowEN) ?? "Stravages";
   const heroTitle =
     (lang === "pt" ? home?.heroTitlePT : home?.heroTitleEN) ?? "STRAVAGES";
   const heroSubtitle =
@@ -57,17 +55,14 @@ export function HomeClient({
 
         <div className="mx-auto flex w-full max-w-7xl items-center px-6 py-24 md:py-32">
           <div className="max-w-[50%] flex flex-col items-start">
-            <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-              {heroEyebrow}
-            </div>
-            <h1 className="mt-6 font-display text-5xl leading-[0.95] tracking-[0.08em] sm:text-7xl md:text-8xl">
+            <h1 className="font-display text-5xl leading-[0.95] tracking-[0.08em] sm:text-7xl md:text-8xl">
               {heroTitle}
             </h1>
-            <p className="mt-6 text-xs sm:text-sm tracking-[0.25em] uppercase text-muted-foreground">
+            <p className="mt-4 text-xs sm:text-sm tracking-[0.25em] uppercase text-muted-foreground">
               {heroSubtitle}
             </p>
             <Link href="/loja" className="mt-10 btn-gold-outline">
-              {lang === "pt" ? "Shop Collection" : "Shop Collection"}
+              Shop Collection
             </Link>
           </div>
         </div>
