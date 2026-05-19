@@ -28,8 +28,42 @@ export function HomeClient({
       ? "Mais que roupa. Uma presença."
       : "More than clothing. A presence.");
 
-  // Top 4 beanies for the colado grid
-  const beanies = products.filter((p) => p.category === "tocas").slice(0, 4);
+  // Top 4 beanies from Sanity for the colado grid
+  const sanityBeanies = products.filter((p) => p.category === "tocas").slice(0, 4);
+
+  // Extra 4 beanies — new high-fidelity studio shots
+  // (TODO: migrate these to Sanity as their own product entries when the brand
+  // owner photographs SKUs; for now they link to the tocas category)
+  const extraBeanies = [
+    {
+      slug: "extra-black",
+      href: "/loja?cat=tocas",
+      name: { pt: "Stravages Beanie Black", en: "Stravages Beanie Black" },
+      price: 25,
+      image: "/products/beanie-black.jpg",
+    },
+    {
+      slug: "extra-white",
+      href: "/loja?cat=tocas",
+      name: { pt: "Stravages Beanie White", en: "Stravages Beanie White" },
+      price: 25,
+      image: "/products/beanie-white.jpg",
+    },
+    {
+      slug: "extra-pink",
+      href: "/loja?cat=tocas",
+      name: { pt: "Stravages Beanie Pink", en: "Stravages Beanie Pink" },
+      price: 25,
+      image: "/products/beanie-pink.jpg",
+    },
+    {
+      slug: "extra-yellow",
+      href: "/loja?cat=tocas",
+      name: { pt: "Stravages Beanie Yellow", en: "Stravages Beanie Yellow" },
+      price: 25,
+      image: "/products/beanie-yellow.jpg",
+    },
+  ];
 
   return (
     <div>
@@ -124,42 +158,39 @@ export function HomeClient({
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4">
-          {(beanies.length > 0
-            ? beanies
-            : [
-                {
-                  slug: "beanie-black",
-                  name: { pt: "Stravages Beanie Black", en: "Stravages Beanie Black" },
-                  price: 25,
-                  images: ["/products/beanie-black.jpg"],
-                },
-                {
-                  slug: "beanie-white",
-                  name: { pt: "Stravages Beanie White", en: "Stravages Beanie White" },
-                  price: 25,
-                  images: ["/products/beanie-white.jpg"],
-                },
-                {
-                  slug: "beanie-pink",
-                  name: { pt: "Stravages Beanie Pink", en: "Stravages Beanie Pink" },
-                  price: 25,
-                  images: ["/products/beanie-pink.jpg"],
-                },
-                {
-                  slug: "beanie-yellow",
-                  name: { pt: "Stravages Beanie Yellow", en: "Stravages Beanie Yellow" },
-                  price: 25,
-                  images: ["/products/beanie-yellow.jpg"],
-                },
-              ]
-          ).map((b, i, arr) => (
+          {/* Old beanies — Sanity products with their PDP routes */}
+          {sanityBeanies.map((b, i) => (
             <Link
               key={b.slug}
               href={`/produto/${b.slug}`}
-              className={`beanie-card ${i < arr.length - 1 ? "md:border-r" : ""} border-[rgba(212,175,55,0.2)]`}
+              className="beanie-card md:border-r border-[rgba(212,175,55,0.2)]"
             >
               <Image
                 src={b.images[0]}
+                alt={b.name[lang]}
+                width={800}
+                height={800}
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="w-full h-auto aspect-square object-cover"
+              />
+              <h3 className="mt-6 mb-2 px-3 text-xs font-semibold uppercase tracking-[0.15em] text-center text-foreground">
+                {b.name[lang]}
+              </h3>
+              <span className="block pb-7 px-3 text-center font-display text-base text-gold">
+                {formatEUR(b.price)}
+              </span>
+            </Link>
+          ))}
+
+          {/* New beanies — high-fidelity studio shots, link to category until SKUs land in Sanity */}
+          {extraBeanies.map((b, i, arr) => (
+            <Link
+              key={b.slug}
+              href={b.href}
+              className={`beanie-card ${i < arr.length - 1 ? "md:border-r" : ""} border-[rgba(212,175,55,0.2)]`}
+            >
+              <Image
+                src={b.image}
                 alt={b.name[lang]}
                 width={800}
                 height={800}
