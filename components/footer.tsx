@@ -19,7 +19,7 @@ export function Footer() {
   if (pathname?.startsWith("/studio")) return null;
 
   return (
-    <footer className="mt-32 border-t border-border bg-black text-foreground">
+    <footer className="gold-divider-top bg-black text-foreground">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
           {/* Brand column */}

@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Truck, ShieldCheck, BadgeCheck } from "lucide-react";
+import { ArrowRight, Crown, Layers, Snowflake, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers";
 import { dict } from "@/lib/i18n";
 import type { Product } from "@/lib/products";
 import type { HomeContent } from "@/lib/site-content";
-import { ProductCard } from "@/components/product-card";
 import { formatEUR } from "@/lib/utils";
 
 export function HomeClient({
@@ -20,309 +19,325 @@ export function HomeClient({
   const { lang } = useLang();
   const t = dict[lang];
 
-  // Sanity overrides with fallbacks to i18n dict
+  // Sanity-driven copy with editorial defaults
   const heroEyebrow =
-    (lang === "pt" ? home?.heroEyebrowPT : home?.heroEyebrowEN) ?? t.hero_eyebrow;
+    (lang === "pt" ? home?.heroEyebrowPT : home?.heroEyebrowEN) ?? "Stravages";
   const heroTitle =
-    (lang === "pt" ? home?.heroTitlePT : home?.heroTitleEN) ??
-    `${t.hero_title_1} ${t.hero_title_2}`;
+    (lang === "pt" ? home?.heroTitlePT : home?.heroTitleEN) ?? "STRAVAGES";
   const heroSubtitle =
     (lang === "pt" ? home?.heroSubtitlePT : home?.heroSubtitleEN) ??
-    t.hero_subtitle;
-  const storyQuote =
-    (lang === "pt" ? home?.storyQuotePT : home?.storyQuoteEN) ??
     (lang === "pt"
-      ? "Mesmo quando tudo aponta contra ti, tu vais."
-      : "Even when everything points against you, you go.");
-  const storyBody =
-    (lang === "pt" ? home?.storyBodyPT : home?.storyBodyEN) ??
-    (lang === "pt"
-      ? "Stravages nasce no conflito entre pressão e propósito. Entre o que te rodeia… e aquilo que recusas tornar-te. Cada peça — toca, balaclava, carteira — é feita para quem vem de baixo, para quem teve de ser mais forte do que as circunstâncias. Não é só roupa. É identidade. É a prova de que de onde vens não define até onde vais."
-      : "Stravages is born in the conflict between pressure and purpose. Between what surrounds you… and what you refuse to become. Every piece — beanie, balaclava, wallet — is made for those who come from below, for those who had to be stronger than circumstances. More than clothing. It's identity. It's proof that where you come from doesn't define how far you go.");
+      ? "Mais que roupa. Uma presença."
+      : "More than clothing. A presence.");
 
-  const featured =
-    products.find((p) => p.slug === "toca-bee-preta") ?? products[0];
-  const grid = products.slice(0, 6);
-  const wallet =
-    products.find((p) => p.slug === "carteira-couro") ??
-    products.find((p) => p.slug === "balaclava-bee") ??
-    products[1] ??
-    products[0];
-
-  if (!featured || !wallet) {
-    return (
-      <div className="mx-auto max-w-3xl px-4 py-32 text-center sm:px-6">
-        <h1 className="font-display text-3xl">STRAVAGES</h1>
-        <p className="mt-4 text-muted-foreground">
-          {lang === "pt"
-            ? "A loja está a ser preparada. Volta em breve."
-            : "The store is being prepared. Check back soon."}
-        </p>
-      </div>
-    );
-  }
+  // Top 4 beanies for the colado grid
+  const beanies = products.filter((p) => p.category === "tocas").slice(0, 4);
 
   return (
     <div>
       {/* ============== HERO ============== */}
-      <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src={
-              home?.heroImage ??
-              featured.images[0] ??
-              "/products/beanie-black-pair.jpg"
-            }
-            alt=""
-            fill
-            priority
-            className="object-cover opacity-50 md:opacity-30"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/40 to-background md:from-background/40 md:via-background/70 md:to-background" />
-          <div className="absolute inset-0 hidden bg-gradient-to-r from-background via-background/30 to-transparent md:block" />
-        </div>
+      <section className="relative isolate min-h-[85vh] overflow-hidden bg-black flex items-stretch">
+        <Image
+          src="/products/balaclava-1.jpg"
+          alt="Stravages — balaclava em pedestal"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_right] -z-10"
+        />
+        {/* Legibility gradient — only left ~45% darkened */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-[1] pointer-events-none hidden md:block"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 25%, rgba(0,0,0,0) 45%)",
+          }}
+        />
 
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 md:gap-16 md:py-28 sm:px-6">
-          <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-              <Sparkles size={14} />
+        <div className="mx-auto flex w-full max-w-7xl items-center px-6 py-24 md:py-32">
+          <div className="max-w-[50%] flex flex-col items-start">
+            <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
               {heroEyebrow}
             </div>
-            <h1 className="mt-6 font-display text-5xl leading-[0.95] tracking-tight sm:text-7xl md:text-8xl">
-              {(() => {
-                // Split the title at the last word for the gold gradient effect when from Sanity (single string).
-                if (home?.heroTitlePT || home?.heroTitleEN) {
-                  const parts = heroTitle.split(/\s+/);
-                  if (parts.length >= 2) {
-                    const last = parts.slice(-1).join(" ");
-                    const first = parts.slice(0, -1).join(" ");
-                    return (
-                      <>
-                        <span className="block text-foreground">{first}</span>
-                        <span className="block gold-gradient">{last}</span>
-                      </>
-                    );
-                  }
-                  return <span className="block gold-gradient">{heroTitle}</span>;
-                }
-                return (
-                  <>
-                    <span className="block text-foreground">{t.hero_title_1}</span>
-                    <span className="block gold-gradient">{t.hero_title_2}</span>
-                  </>
-                );
-              })()}
+            <h1 className="mt-6 font-display text-5xl leading-[0.95] tracking-[0.08em] sm:text-7xl md:text-8xl">
+              {heroTitle}
             </h1>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-6 text-xs sm:text-sm tracking-[0.25em] uppercase text-muted-foreground">
               {heroSubtitle}
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link
-                href="/loja"
-                className="group inline-flex items-center justify-center gap-2 rounded-full btn-gold-shine px-8 py-4 text-sm font-bold uppercase tracking-widest shadow-[0_0_0_1px_rgba(212,175,55,0.4),0_8px_30px_-12px_rgba(212,175,55,0.6)] transition-transform hover:scale-[1.02]"
-              >
-                {t.hero_cta_shop}
-                <ArrowRight
-                  size={16}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </Link>
-              <Link
-                href="/sobre"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface/40 px-8 py-4 text-sm font-medium uppercase tracking-widest text-foreground backdrop-blur transition-colors hover:border-gold/60 hover:text-gold"
-              >
-                {t.hero_cta_story}
-              </Link>
-            </div>
-
-            {/* Decorative bee */}
-            <div className="pointer-events-none absolute right-0 top-1/2 -z-10 hidden -translate-y-1/2 opacity-[0.08] md:block">
-              <Image
-                src="/brand/bee.png"
-                alt=""
-                width={600}
-                height={600}
-                className="object-contain"
-              />
-            </div>
-          </div>
-
-          <div className="relative hidden md:block">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-surface">
-              <Image
-                src={wallet.images[0]}
-                alt={wallet.name[lang]}
-                fill
-                priority
-                sizes="50vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black via-black/70 to-transparent p-6">
-                <div>
-                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold">
-                    {t.featured_eyebrow}
-                  </div>
-                  <div className="mt-2 font-display text-2xl font-bold tracking-wide text-white">
-                    {wallet.name[lang]}
-                  </div>
-                  <div className="mt-1 text-sm text-white/70">
-                    {formatEUR(wallet.price)}
-                  </div>
-                </div>
-                <Link
-                  href={`/produto/${wallet.slug}`}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gold text-black transition-transform hover:scale-110"
-                  aria-label={wallet.name[lang]}
-                >
-                  <ArrowRight size={18} />
-                </Link>
-              </div>
-            </div>
+            <Link href="/loja" className="mt-10 btn-gold-outline">
+              {lang === "pt" ? "Shop Collection" : "Shop Collection"}
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-border bg-black">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-y-6 px-4 py-8 sm:grid-cols-4 sm:px-6">
-          {[
-            { icon: BadgeCheck, label: t.trust_authentic },
-            { icon: Truck, label: t.trust_shipping },
-            { icon: ShieldCheck, label: t.trust_secure },
-            { icon: Sparkles, label: t.trust_quality },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-center gap-3 text-center text-[11px] font-bold tracking-[0.22em] text-gold"
-            >
-              <item.icon size={18} className="text-gold-light" />
-              <span>{item.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <div className="order-2 md:order-1">
-            <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-              {t.featured_eyebrow}
-            </div>
-            <h2 className="mt-4 font-display text-4xl tracking-tight sm:text-5xl">
-              {featured.name[lang]}
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              {featured.description[lang]}
-            </p>
-            <ul className="mt-8 space-y-3">
-              {featured.features[lang].map((f, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-                  <span className="text-foreground/85">{f}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10 flex items-center gap-6">
-              <Link
-                href={`/produto/${featured.slug}`}
-                className="inline-flex items-center gap-2 rounded-full btn-gold-shine px-8 py-4 text-sm font-bold uppercase tracking-widest"
-              >
-                {t.hero_cta_shop}
-                <ArrowRight size={16} />
-              </Link>
-              <div className="flex items-baseline gap-2">
-                <span className="font-display text-2xl font-bold text-gold">
-                  {formatEUR(featured.price)}
-                </span>
-                {featured.oldPrice && (
-                  <span className="text-sm text-muted-foreground line-through">
-                    {formatEUR(featured.oldPrice)}
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="order-1 md:order-2">
-            <div className="relative aspect-square overflow-hidden rounded-2xl border border-border bg-surface">
-              <Image
-                src={featured.images[0]}
-                alt={featured.name[lang]}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
-              {featured.badge && (
-                <div className="absolute right-4 top-4 rounded-full bg-gold px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-black">
-                  {featured.badge[lang]}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6">
-        <div className="flex items-end justify-between border-b border-border pb-6">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-              {lang === "pt" ? "Toda a coleção" : "Full collection"}
-            </div>
-            <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">
-              {lang === "pt" ? "Compra agora" : "Shop now"}
-            </h2>
-          </div>
-          <Link
-            href="/loja"
-            className="hidden items-center gap-2 text-sm font-semibold uppercase tracking-widest text-gold transition-colors hover:text-gold-light md:inline-flex"
-          >
-            {lang === "pt" ? "Ver tudo" : "View all"}
-            <ArrowRight size={14} />
-          </Link>
-        </div>
-        <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
-          {grid.map((p) => (
-            <ProductCard key={p.slug} product={p} />
-          ))}
-        </div>
-        <div className="mt-12 text-center md:hidden">
-          <Link
-            href="/loja"
-            className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-gold"
-          >
-            {lang === "pt" ? "Ver tudo" : "View all"}
-            <ArrowRight size={14} />
-          </Link>
-        </div>
-      </section>
-
-      <section className="relative isolate overflow-hidden border-y border-border bg-black">
-        <div className="absolute inset-0 -z-10 opacity-20">
+      {/* ============== SIGNATURE BEE COLLECTION ============== */}
+      <section className="relative isolate gold-divider-top overflow-hidden">
+        <div className="grid md:grid-cols-[1.6fr_1fr] items-center">
           <Image
-            src="/products/beanie-features.jpg"
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
+            src="/products/signature-beanie.jpg"
+            alt="Toca Bee — abelha e lettering bordados em dourado sobre seda preta"
+            width={1600}
+            height={2000}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            className="block w-full h-auto"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/40" />
-        </div>
-        <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
-          <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-            الله · {lang === "pt" ? "A nossa marca" : "Our brand"}
+          <div className="flex flex-col items-start gap-6 px-6 py-12 md:px-12 md:py-0 md:pr-16">
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+              {lang === "pt" ? "Assinatura" : "Signature"}
+            </span>
+            <h2 className="font-display text-4xl sm:text-5xl tracking-tight leading-[1.05]">
+              {lang === "pt" ? (
+                <>
+                  Signature Bee
+                  <br />
+                  Collection
+                </>
+              ) : (
+                <>
+                  Signature Bee
+                  <br />
+                  Collection
+                </>
+              )}
+            </h2>
+            <p className="text-base leading-relaxed text-muted-foreground max-w-md">
+              {lang === "pt"
+                ? "Identidade marcada. Sem compromissos. Linhas premium desenhadas para elevar a tua presença."
+                : "Marked identity. No compromises. Premium lines designed to elevate your presence."}
+            </p>
+            <Link href="/loja?cat=tocas" className="btn-gold-outline">
+              {lang === "pt" ? "Ver Produtos" : "View Products"}
+            </Link>
           </div>
-          <blockquote className="mt-6 font-display text-3xl leading-[1.15] tracking-tight text-white sm:text-5xl">
-            &ldquo;<span className="gold-gradient">{storyQuote}</span>&rdquo;
-          </blockquote>
-          <p className="mt-8 text-sm leading-relaxed text-white/70 sm:text-base">
-            {storyBody}
+        </div>
+      </section>
+
+      {/* ============== BEANIES GRID (colado) ============== */}
+      <section className="gold-divider-top py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-10 text-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+              {lang === "pt" ? "Coleção Essencial" : "Essential Collection"}
+            </span>
+            <h2 className="mt-3 font-display text-4xl sm:text-5xl tracking-tight">
+              {lang === "pt" ? "Beanies" : "Beanies"}
+            </h2>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4">
+          {(beanies.length > 0
+            ? beanies
+            : [
+                {
+                  slug: "beanie-black",
+                  name: { pt: "Stravages Beanie Black", en: "Stravages Beanie Black" },
+                  price: 25,
+                  images: ["/products/beanie-black.jpg"],
+                },
+                {
+                  slug: "beanie-white",
+                  name: { pt: "Stravages Beanie White", en: "Stravages Beanie White" },
+                  price: 25,
+                  images: ["/products/beanie-white.jpg"],
+                },
+                {
+                  slug: "beanie-pink",
+                  name: { pt: "Stravages Beanie Pink", en: "Stravages Beanie Pink" },
+                  price: 25,
+                  images: ["/products/beanie-pink.jpg"],
+                },
+                {
+                  slug: "beanie-yellow",
+                  name: { pt: "Stravages Beanie Yellow", en: "Stravages Beanie Yellow" },
+                  price: 25,
+                  images: ["/products/beanie-yellow.jpg"],
+                },
+              ]
+          ).map((b, i, arr) => (
+            <Link
+              key={b.slug}
+              href={`/produto/${b.slug}`}
+              className={`beanie-card ${i < arr.length - 1 ? "md:border-r" : ""} border-[rgba(212,175,55,0.2)]`}
+            >
+              <Image
+                src={b.images[0]}
+                alt={b.name[lang]}
+                width={800}
+                height={800}
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="w-full h-auto aspect-square object-cover"
+              />
+              <h3 className="mt-6 mb-2 px-3 text-xs font-semibold uppercase tracking-[0.15em] text-center text-foreground">
+                {b.name[lang]}
+              </h3>
+              <span className="block pb-7 px-3 text-center font-display text-base text-gold">
+                {formatEUR(b.price)}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ============== STRAVAGES SET ============== */}
+      <section className="relative isolate gold-divider-top overflow-hidden">
+        <div className="grid md:grid-cols-[1fr_1.6fr] items-center">
+          <div className="flex flex-col items-start gap-6 px-6 py-12 md:px-12 md:py-0 md:pl-16">
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+              {lang === "pt" ? "Conjuntos Exclusivos" : "Exclusive Sets"}
+            </span>
+            <h2 className="font-display text-4xl sm:text-5xl tracking-tight leading-[1.05]">
+              Stravages Set
+            </h2>
+            <p className="text-base leading-relaxed text-muted-foreground max-w-md">
+              {lang === "pt"
+                ? "Construído para presença. Não para passar despercebido. Hoodie relaxado e calças premium em tecido pesado com detalhes de costura e bordados em ouro."
+                : "Built for presence. Not to pass unnoticed. Relaxed hoodie and premium pants in heavyweight fabric with gold stitching and embroidery."}
+            </p>
+            <Link href="/loja?cat=tracksuits" className="btn-gold-outline">
+              {lang === "pt" ? "Shop Set" : "Shop Set"}
+            </Link>
+          </div>
+          <Image
+            src="/products/stravages-set.jpg"
+            alt="Stravages Set — hoodie e calças pretos com detalhes dourados e abelha bordada"
+            width={2000}
+            height={1200}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            className="block w-full h-auto"
+          />
+        </div>
+      </section>
+
+      {/* ============== FEATURES (4 cols) ============== */}
+      <section className="gold-divider-top py-16 bg-black">
+        <div className="mx-auto max-w-7xl px-6 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 text-center">
+          {[
+            {
+              Icon: Crown,
+              title: lang === "pt" ? "Exclusividade" : "Exclusivity",
+              desc:
+                lang === "pt"
+                  ? "Peças limitadas. Para poucos."
+                  : "Limited pieces. For the few.",
+            },
+            {
+              Icon: Layers,
+              title: lang === "pt" ? "Qualidade Premium" : "Premium Quality",
+              desc:
+                lang === "pt"
+                  ? "Materiais selecionados para máximo conforto."
+                  : "Materials selected for maximum comfort.",
+            },
+            {
+              Icon: Snowflake,
+              title: lang === "pt" ? "Conforto Térmico" : "Thermal Comfort",
+              desc:
+                lang === "pt"
+                  ? "Proteção e aquecimento para qualquer estação."
+                  : "Protection and warmth for any season.",
+            },
+            {
+              Icon: Sparkles,
+              title: lang === "pt" ? "Atitude" : "Attitude",
+              desc:
+                lang === "pt"
+                  ? "Mais que um acessório. Um estilo de vida."
+                  : "More than an accessory. A lifestyle.",
+            },
+          ].map(({ Icon, title, desc }, i) => (
+            <div key={i} className="flex flex-col items-center gap-3">
+              <Icon className="text-gold" size={32} strokeWidth={1.4} />
+              <h3 className="font-display text-sm tracking-[0.22em] uppercase">
+                {title}
+              </h3>
+              <p className="text-xs text-muted-foreground leading-relaxed max-w-[220px]">
+                {desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============== CADA DETALHE IMPORTA (packaging) ============== */}
+      <section className="relative isolate gold-divider-top overflow-hidden">
+        <div className="grid md:grid-cols-[1fr_1.6fr] items-center">
+          <div className="flex flex-col items-start gap-6 px-6 py-12 md:px-12 md:py-0 md:pl-16">
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+              {lang === "pt" ? "Unboxing" : "Unboxing"}
+            </span>
+            <h2 className="font-display text-4xl sm:text-5xl tracking-tight leading-[1.05]">
+              {lang === "pt" ? (
+                <>
+                  Cada detalhe
+                  <br />
+                  importa.
+                </>
+              ) : (
+                <>
+                  Every detail
+                  <br />
+                  matters.
+                </>
+              )}
+            </h2>
+            <p className="text-base leading-relaxed text-muted-foreground max-w-md">
+              {lang === "pt"
+                ? "Do toque do material à abertura da embalagem. As nossas caixas exclusivas com acabamento mate e relevo dourado elevam o produto à categoria de obra de arte."
+                : "From the touch of the fabric to the unboxing. Our exclusive matte boxes with gold-foil embossing elevate the product to art."}
+            </p>
+          </div>
+          <Image
+            src="/products/packaging.jpg"
+            alt="Caixa Stravages premium com logo e abelha em relevo dourado sobre veludo preto"
+            width={2000}
+            height={1200}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            className="block w-full h-auto"
+          />
+        </div>
+      </section>
+
+      {/* ============== NEWSLETTER ============== */}
+      <section className="gold-divider-top py-20 bg-surface text-center">
+        <div className="mx-auto max-w-2xl px-6">
+          <h2 className="font-display text-3xl sm:text-4xl tracking-tight">
+            {lang === "pt" ? "Faz parte da colmeia" : "Join the hive"}
+          </h2>
+          <p className="mt-4 text-muted-foreground text-sm sm:text-base">
+            {lang === "pt"
+              ? "Recebe novidades, drops exclusivos e acesso antecipado."
+              : "Get news, exclusive drops, and early access."}
           </p>
-          <Link
-            href="/sobre"
-            className="mt-10 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-black/60 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-black"
+          <form
+            className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert(
+                lang === "pt"
+                  ? "Inscrição concluída. Bem-vindo à colmeia."
+                  : "Subscription confirmed. Welcome to the hive.",
+              );
+            }}
           >
-            {t.hero_cta_story}
-            <ArrowRight size={14} />
-          </Link>
+            <input
+              type="email"
+              required
+              placeholder={
+                lang === "pt" ? "O TEU EMAIL" : "YOUR EMAIL"
+              }
+              className="flex-1 bg-transparent border border-border focus:border-gold outline-none px-4 py-3 text-sm tracking-widest uppercase"
+            />
+            <button
+              type="submit"
+              className="btn-gold-shine px-8 py-3 text-xs font-bold tracking-widest uppercase"
+            >
+              {lang === "pt" ? "Subscrever" : "Subscribe"}
+            </button>
+          </form>
         </div>
       </section>
     </div>

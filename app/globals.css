@@ -149,3 +149,67 @@ body {
   animation: shine 6s linear infinite;
   color: #0a0a0a;
 }
+
+/* Editorial section divider — thin gold line between full-bleed image sections */
+.gold-divider-top {
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+/* Gold outline button — premium editorial CTA */
+.btn-gold-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  border: 1px solid var(--color-gold);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--foreground);
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: color 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+.btn-gold-outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold) 50%,
+    var(--color-gold-dark)
+  );
+  z-index: -1;
+  transform: translateX(-101%);
+  transition: transform 0.45s ease;
+}
+.btn-gold-outline:hover {
+  color: #000;
+  border-color: transparent;
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
+}
+.btn-gold-outline:hover::before {
+  transform: translateX(0);
+}
+
+/* Beanie card link — no decoration, no padding (image fills the cell) */
+.beanie-card {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.beanie-card:hover {
+  background-color: #0e0e0e;
+}
+.beanie-card img {
+  transition: transform 0.4s ease;
+}
+.beanie-card:hover img {
+  transform: scale(1.03);
+}
