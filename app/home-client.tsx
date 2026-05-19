@@ -75,7 +75,7 @@ export function HomeClient({
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_right] -z-10"
+          className="object-cover object-[65%_center] md:object-[center_right] -z-10"
         />
         {/* Legibility gradient — only left ~45% darkened */}
         <div
