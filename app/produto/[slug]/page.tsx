@@ -28,7 +28,7 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
-  if (!product) return { title: "Plug Empire" };
+  if (!product) return { title: "Stravages" };
   return {
     title: product.name.pt,
     description: product.description.pt,

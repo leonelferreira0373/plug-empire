@@ -1,18 +1,17 @@
 // Single source of truth for brand contact info.
-// Replace the WhatsApp number when the real one is provided.
 
 export const BRAND = {
-  name: "PLUG EMPIRE",
-  tagline_pt: "Todo o sonho é possível. Basta acreditar.",
-  tagline_en: "Every dream is possible. You just have to believe.",
+  name: "STRAVAGES",
+  tagline_pt: "Nascido no risco. Movido pela visão.",
+  tagline_en: "Born in risk. Driven by vision.",
   email: "Plugempire.contact@gmail.com",
   // Phone in international format, no + or spaces. Used to build wa.me link.
-  whatsapp: "351900000000", // TODO: replace with real PT number when provided
-  instagram_main: "plug_empire",
-  instagram_brand: "stravages.clo",
+  whatsapp: "351934728032",
+  instagram_main: "stravages.clo",
+  instagram_brand: "plug_empire",
   linktree: "https://linktr.ee/plug_empire",
   address: "Lisboa, Portugal",
-  founded: 2022,
+  founded: 2026,
 } as const;
 
 export function whatsappUrl(message: string): string {

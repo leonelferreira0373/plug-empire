@@ -8,8 +8,8 @@ export default function PrivacidadePage() {
     <LegalPage
       title={{ pt: "Política de Privacidade", en: "Privacy Policy" }}
       intro={{
-        pt: "A Plug Empire respeita a tua privacidade. Esta política descreve que informação recolhemos quando interages connosco e como a tratamos.",
-        en: "Plug Empire respects your privacy. This policy describes what information we collect when you interact with us and how we handle it.",
+        pt: "A Stravages respeita a tua privacidade. Esta política descreve que informação recolhemos quando interages connosco e como a tratamos.",
+        en: "Stravages respects your privacy. This policy describes what information we collect when you interact with us and how we handle it.",
       }}
       sections={[
         {
@@ -17,13 +17,13 @@ export default function PrivacidadePage() {
           body: {
             pt: (
               <L>
-                Plug Empire é uma marca portuguesa de streetwear premium, com sede em {BRAND.address}.
+                Stravages é uma marca portuguesa de streetwear premium, com sede em {BRAND.address}.
                 Contacto: <a href={`mailto:${BRAND.email}`} className="text-gold underline">{BRAND.email}</a>.
               </L>
             ),
             en: (
               <L>
-                Plug Empire is a Portuguese premium streetwear brand based in {BRAND.address}.
+                Stravages is a Portuguese premium streetwear brand based in {BRAND.address}.
                 Contact: <a href={`mailto:${BRAND.email}`} className="text-gold underline">{BRAND.email}</a>.
               </L>
             ),

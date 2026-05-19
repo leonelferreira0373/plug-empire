@@ -10,7 +10,7 @@ const apiVersion = "2025-01-01";
 
 export default defineConfig({
   name: "plug-empire",
-  title: "Plug Empire",
+  title: "Stravages",
   basePath: "/studio",
   projectId,
   dataset,

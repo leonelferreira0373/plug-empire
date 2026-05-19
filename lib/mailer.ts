@@ -33,7 +33,7 @@ type SendArgs = {
 
 export async function sendMail({ to, subject, html, replyTo }: SendArgs) {
   const transporter = getTransporter();
-  const from = process.env.EMAIL_FROM ?? "Plug Empire <noreply@plugempire.com>";
+  const from = process.env.EMAIL_FROM ?? "Stravages <noreply@plugempire.com>";
 
   const info = await transporter.sendMail({
     from,

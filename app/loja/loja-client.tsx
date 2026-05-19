@@ -27,7 +27,7 @@ export function LojaClient({ products }: { products: Product[] }) {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
       <div className="border-b border-border pb-8">
         <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-          Plug Empire
+          Stravages
         </div>
         <h1 className="mt-3 font-display text-4xl tracking-tight sm:text-6xl">
           {t.catalog_title}

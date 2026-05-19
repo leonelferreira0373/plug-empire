@@ -57,7 +57,7 @@ export default function EnviosPage() {
         {
           heading: { pt: "4. Como acompanhar", en: "4. Tracking" },
           body: {
-            pt: <L>Recebes actualizações pelo WhatsApp: confirmação, expedição e entrega. Não dependes de um portal de tracking — falamos contigo directamente.</L>,
+            pt: <L>Recebes atualizações pelo WhatsApp: confirmação, expedição e entrega. Não dependes de um portal de tracking — falamos contigo diretamente.</L>,
             en: <L>You'll receive updates via WhatsApp: confirmation, dispatch and delivery. No tracking portal needed — we talk to you directly.</L>,
           },
         },

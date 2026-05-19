@@ -86,7 +86,6 @@ export const product = defineType({
         list: [
           { title: "Tocas", value: "tocas" },
           { title: "Balaclavas", value: "balaclavas" },
-          { title: "Fatos", value: "fatos" },
           { title: "Carteiras", value: "carteiras" },
           { title: "Joalharia", value: "joalharia" },
         ],

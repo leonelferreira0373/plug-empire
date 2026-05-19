@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Plug Empire · Studio",
+  title: "Stravages · Studio",
   robots: { index: false, follow: false },
 };
 

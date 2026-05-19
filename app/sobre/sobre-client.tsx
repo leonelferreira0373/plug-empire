@@ -10,39 +10,55 @@ import type { AboutContent } from "@/lib/site-content";
 
 const FALLBACK_PILLARS = [
   {
-    titlePT: "Origem",
-    titleEN: "Origin",
+    titlePT: "Colmeia",
+    titleEN: "Hive",
     bodyPT:
-      "Desenhado e curado em Portugal. As peças são produzidas com fornecedores parceiros nos EUA, Emirados, Turquia e Namíbia.",
+      "Sai da colmeia todos os dias sem garantias. Mesmo assim, vai. Para quem enfrenta pressão e recusa o destino imposto.",
     bodyEN:
-      "Designed and curated in Portugal. Pieces are produced with partner suppliers in the USA, UAE, Turkey and Namibia.",
+      "Leaves the hive every day without guarantees. Goes anyway. For those who face pressure and refuse the destiny imposed on them.",
   },
   {
     titlePT: "Detalhe",
     titleEN: "Detail",
     bodyPT:
-      "Cada toca leva forro de cetim. Cada carteira é gravada com folha dourada real. Cada costura é inspeccionada.",
+      "Cada toca leva forro de cetim. Cada peça é inspecionada antes de sair. Sem atalhos. Sem desculpas.",
     bodyEN:
-      "Every beanie has a satin lining. Every wallet is stamped with real gold foil. Every seam is inspected.",
+      "Every beanie has a satin lining. Every piece is inspected before it leaves. No shortcuts. No excuses.",
   },
   {
-    titlePT: "Comunidade",
-    titleEN: "Community",
+    titlePT: "Identidade",
+    titleEN: "Identity",
     bodyPT:
-      "Vestimos artistas, fundadores, gente que constrói. Cada peça é uma chancela de quem acredita.",
+      "Não é moda. É bandeira. É o nome que escolhemos vestir — para quem vem de baixo e vai longe.",
     bodyEN:
-      "We dress artists, founders, builders. Every piece is a stamp of someone who believes.",
+      "Not fashion. A flag. The name we choose to wear — for those who come from below and go far.",
   },
 ];
 
 const FALLBACK_INTRO = {
-  pt: "Plug Empire nasceu em Portugal como uma promessa simples: vestir os que constroem o seu próprio nome.",
-  en: "Plug Empire was born in Portugal as a simple promise: dressing those building their own name.",
+  pt: "Stravages nasce na tensão entre o que te rodeia e aquilo que recusas tornar-te. Para quem vem de baixo, para quem enfrenta pressão, para quem não aceita o destino imposto.",
+  en: "Stravages is born in the tension between what surrounds you and what you refuse to become. For those who come from below, who face pressure, who refuse the destiny imposed on them.",
 };
 
 const FALLBACK_MANIFESTO = {
-  pt: "Trabalho, dedicação, atenção ao detalhe. Da escolha do tecido ao bordado da abelha, nada é deixado ao acaso.",
-  en: "Work, dedication, attention to detail. From the fabric to the bee embroidery, nothing is left to chance.",
+  pt: `Não começou com um plano. Começou com sobrevivência. Num lugar onde sair de casa nunca era só sair — era arriscar. Era não saber se o dia acabava como começou.
+
+Crescer ali não era simples. Ou escolhes quem queres ser… ou o ambiente escolhe por ti. Todos os dias havia exemplos do caminho fácil. Dinheiro rápido. Decisões erradas. Destinos previsíveis. Mas dentro de alguns havia outra voz. Uma pergunta silenciosa: "Isto é tudo… ou há mais?"
+
+Stravages nasce exatamente aí. No conflito entre pressão e propósito. Entre o que te rodeia… e aquilo que recusas tornar-te.
+
+A abelha carrega essa verdade. Sai todos os dias da colmeia sem garantias. Sem certeza de voltar. Com risco constante. Mesmo assim, vai. Não porque é fácil — mas porque é o que tem de ser feito. E talvez o mais poderoso: voa mesmo quando dizem que não devia conseguir. Tal como nós.
+
+Não é só roupa. É identidade. É mentalidade. É a prova de que de onde vens não define até onde vais.`,
+  en: `It didn't start with a plan. It started with survival. In a place where leaving home was never just leaving — it was risking. It was not knowing if the day would end the way it started.
+
+Growing up there wasn't simple. Either you choose who you want to be… or the environment chooses for you. Every day there were examples of the easy path. Quick money. Wrong decisions. Predictable destinies. But inside some, there was another voice. A silent question: "Is this all… or is there more?"
+
+Stravages is born exactly there. In the conflict between pressure and purpose. Between what surrounds you… and what you refuse to become.
+
+The bee carries that truth. It leaves the hive every day without guarantees. Without certainty of returning. With constant risk. Even so, it goes. Not because it's easy — but because it's what has to be done. And maybe most powerful: it flies even when they say it shouldn't be able to. Just like us.
+
+More than clothing. It's identity. It's mentality. It's proof that where you come from doesn't define how far you go.`,
 };
 
 export function SobreClient({ content }: { content: AboutContent | null }) {
@@ -82,7 +98,7 @@ export function SobreClient({ content }: { content: AboutContent | null }) {
         <div className="mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 sm:py-32">
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
             <Sparkles size={14} />
-            EST. {BRAND.founded} · PORTUGAL
+            EST. {BRAND.founded} · LISBOA
           </div>
           <h1 className="mt-6 font-display text-5xl tracking-tight sm:text-7xl">
             <span className="block">{headline}</span>
@@ -126,8 +142,8 @@ export function SobreClient({ content }: { content: AboutContent | null }) {
       <section className="border-y border-border bg-black">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-16 text-center sm:px-6 sm:py-20">
           <h2 className="font-display text-3xl tracking-tight text-white sm:text-5xl">
-            {lang === "pt" ? "Veste o" : "Wear the"}{" "}
-            <span className="gold-gradient">Plug Empire.</span>
+            {lang === "pt" ? "Veste o" : "Wear"}{" "}
+            <span className="gold-gradient">Stravages.</span>
           </h2>
           <Link
             href="/loja"

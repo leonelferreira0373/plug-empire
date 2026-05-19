@@ -131,7 +131,7 @@ export function ProductDetail({
         {/* INFO */}
         <div className="flex flex-col">
           <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-            Plug Empire
+            Stravages
           </div>
           <h1 className="mt-3 font-display text-3xl tracking-tight sm:text-5xl">
             {product.name[lang]}

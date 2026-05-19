@@ -9,19 +9,19 @@ export const home = defineType({
       name: "heroEyebrowPT",
       title: "Hero — sub-título pequeno (PT)",
       type: "string",
-      initialValue: "Plug Empire",
+      initialValue: "Stravages",
     }),
     defineField({
       name: "heroEyebrowEN",
       title: "Hero — small label (EN)",
       type: "string",
-      initialValue: "Plug Empire",
+      initialValue: "Stravages",
     }),
     defineField({
       name: "heroTitlePT",
       title: "Hero — título principal (PT)",
       type: "string",
-      description: 'Ex: "Todo o sonho é possível."',
+      description: 'Ex: "Nascido no risco. Movido pela visão."',
     }),
     defineField({
       name: "heroTitleEN",

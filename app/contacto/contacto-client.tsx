@@ -27,13 +27,12 @@ export function ContactoClient({
   const email = content?.email ?? BRAND.email;
   const whatsapp = content?.whatsapp ?? BRAND.whatsapp;
   const igMain = content?.instagramMain ?? BRAND.instagram_main;
-  const igBrand = content?.instagramBrand ?? BRAND.instagram_brand;
   const linktree = content?.linktree ?? BRAND.linktree;
   const address = content?.address ?? BRAND.address;
   const hours =
     (lang === "pt" ? content?.hoursPT : content?.hoursEN) ??
     (lang === "pt"
-      ? "Respondemos via WhatsApp todos os dias, das 09h às 22h (hora de Lisboa). Para encomendas urgentes, mencione na primeira mensagem."
+      ? "Respondemos via WhatsApp todos os dias, das 09h às 22h (hora de Lisboa). Para encomendas urgentes, menciona na primeira mensagem."
       : "We reply on WhatsApp every day, 9 AM to 10 PM (Lisbon time). For urgent orders, mention it in your first message.");
 
   const channels = [
@@ -46,8 +45,8 @@ export function ContactoClient({
           : "Fast reply — store support",
       href: `https://wa.me/${whatsapp}?text=${encodeURIComponent(
         lang === "pt"
-          ? "Olá! Vim do site Plug Empire."
-          : "Hi! I came from the Plug Empire site.",
+          ? "Olá! Vim do site Stravages."
+          : "Hi! I came from the Stravages site.",
       )}`,
       cta: lang === "pt" ? "Falar agora" : "Chat now",
     },
@@ -60,16 +59,9 @@ export function ContactoClient({
     },
     {
       icon: InstagramIcon,
-      label: "Instagram · Plug Empire",
+      label: "Instagram",
       value: `@${igMain}`,
       href: `https://instagram.com/${igMain}`,
-      cta: lang === "pt" ? "Ver perfil" : "View profile",
-    },
-    {
-      icon: InstagramIcon,
-      label: "Instagram · Stravages",
-      value: `@${igBrand}`,
-      href: `https://instagram.com/${igBrand}`,
       cta: lang === "pt" ? "Ver perfil" : "View profile",
     },
     {
@@ -84,7 +76,7 @@ export function ContactoClient({
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
       <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-        Plug Empire
+        Stravages
       </div>
       <h1 className="mt-3 font-display text-5xl tracking-tight sm:text-6xl">
         {headline}

@@ -45,14 +45,13 @@ const PRODUCTS = [
     namePT: "Toca Bee — Preta",
     nameEN: "Bee Beanie — Black",
     category: "tocas",
-    price: 34.9,
-    oldPrice: 49.9,
+    price: 25,
     badgePT: "Mais vendido",
     badgeEN: "Bestseller",
     descriptionPT:
-      "A toca emblema do Plug Empire. Algodão de alta densidade com forro de cetim que protege o cabelo e evita o frizz. Bordado dourado da abelha — assinatura discreta, presença total.",
+      "A toca emblema Stravages. Algodão de alta densidade com forro de cetim que protege o cabelo e evita o frizz. Bordado dourado da abelha — assinatura discreta, presença total.",
     descriptionEN:
-      "The flagship Plug Empire beanie. High-density cotton with a satin lining that protects hair and prevents frizz. Gold bee embroidery — discreet signature, total presence.",
+      "The flagship Stravages beanie. High-density cotton with a satin lining that protects hair and prevents frizz. Gold bee embroidery — discreet signature, total presence.",
     featuresPT: [
       "Forro de cetim que evita o frizz",
       "Logotipo bordado em fio dourado",
@@ -89,7 +88,7 @@ const PRODUCTS = [
     namePT: "Toca Bee — Branca",
     nameEN: "Bee Beanie — White",
     category: "tocas",
-    price: 34.9,
+    price: 25,
     descriptionPT:
       "Versão branca da toca assinatura. Limpa, leve, com o bordado da abelha em amarelo dourado.",
     descriptionEN:
@@ -111,7 +110,7 @@ const PRODUCTS = [
     namePT: "Toca Bee — Amarela",
     nameEN: "Bee Beanie — Yellow",
     category: "tocas",
-    price: 34.9,
+    price: 25,
     badgePT: "Edição limitada",
     badgeEN: "Limited drop",
     descriptionPT:
@@ -128,14 +127,14 @@ const PRODUCTS = [
     ],
     stock: 10,
     order: 3,
-    related: ["toca-bee-preta", "fato-empire-amarelo", "balaclava-bee"],
+    related: ["toca-bee-preta", "balaclava-bee", "toca-bee-rosa"],
   },
   {
     slug: "toca-bee-rosa",
     namePT: "Toca Bee — Rosa",
     nameEN: "Bee Beanie — Pink",
     category: "tocas",
-    price: 34.9,
+    price: 25,
     descriptionPT: "Rosa pó com o lettering Stravages a destacar-se.",
     descriptionEN: "Powder pink with the Stravages lettering set against it.",
     featuresPT: ["Rosa pó", "Lettering branco", "Forro de cetim", "Ajuste relaxado"],
@@ -153,14 +152,14 @@ const PRODUCTS = [
     ],
     stock: 12,
     order: 4,
-    related: ["toca-bee-preta", "toca-bee-branca", "carteira-stravages"],
+    related: ["toca-bee-preta", "toca-bee-branca", "carteira-couro"],
   },
   {
     slug: "balaclava-bee",
     namePT: "Balaclava Bee",
     nameEN: "Bee Balaclava",
     category: "balaclavas",
-    price: 54.9,
+    price: 25,
     badgePT: "Novo",
     badgeEN: "New",
     descriptionPT:
@@ -174,56 +173,26 @@ const PRODUCTS = [
     colors: [{ name: "Preto", hex: "#0a0a0a" }],
     stock: 15,
     order: 5,
-    related: ["toca-bee-preta", "carteira-stravages", "fato-empire-amarelo"],
+    related: ["toca-bee-preta", "carteira-couro", "toca-bee-amarela"],
   },
   {
-    slug: "fato-empire-amarelo",
-    namePT: "Fato Empire — Amarelo",
-    nameEN: "Empire Tracksuit — Yellow",
-    category: "fatos",
-    price: 179.9,
-    oldPrice: 219.9,
-    badgePT: "Conjunto",
-    badgeEN: "Full set",
-    descriptionPT:
-      "Conjunto completo: hoodie zip + calça de fato em amarelo abelha, com patches bordados.",
-    descriptionEN:
-      "Full set: zip hoodie + tracksuit pants in bee-yellow with embroidered patches.",
-    featuresPT: ["Fecho dourado", "Aplicações bordadas", "Toca incluída", "Gramagem pesada"],
-    featuresEN: ["Gold zipper", "Embroidered appliqués", "Beanie included", "Heavyweight cotton"],
-    images: [
-      "products/tracksuit-yellow-1.jpg",
-      "products/tracksuit-yellow-2.jpg",
-      "products/tracksuit-yellow-3.jpg",
-    ],
-    sizes: ["S", "M", "L", "XL"],
-    colors: [{ name: "Amarelo", hex: "#F5B82E" }],
-    stock: 6,
-    bestseller: true,
-    order: 6,
-    related: ["toca-bee-amarela", "carteira-stravages", "balaclava-bee"],
-  },
-  {
-    slug: "carteira-stravages",
-    namePT: "Carteira Stravages — Couro",
-    nameEN: "Stravages Wallet — Leather",
+    slug: "carteira-couro",
+    namePT: "Carteira — Couro",
+    nameEN: "Wallet — Leather",
     category: "carteiras",
-    price: 89.9,
-    badgePT: "Premium",
-    badgeEN: "Premium",
+    price: 20,
     descriptionPT:
-      "Carteira em couro preto com a abelha e o lettering Stravages gravados a quente em folha dourada.",
+      "Carteira em couro preto. Acessório complementar selecionado pela casa — sem branding Stravages, para quem prefere uma peça discreta.",
     descriptionEN:
-      "Black leather wallet with the bee and Stravages lettering hot-stamped in gold foil.",
-    featuresPT: ["Couro genuíno", "Folha dourada real", "6 compartimentos", "Caixa premium"],
-    featuresEN: ["Genuine leather", "Real gold foil", "6 card slots", "Premium box"],
+      "Black leather wallet. A complementary accessory curated by the house — without Stravages branding, for those who prefer a discreet piece.",
+    featuresPT: ["Couro genuíno", "6 compartimentos para cartões", "Compartimento para notas", "Sem branding visível"],
+    featuresEN: ["Genuine leather", "6 card slots", "Banknote compartment", "No visible branding"],
     images: ["products/wallet-1.png"],
     sizes: ["Único"],
-    colors: [{ name: "Preto / Ouro", hex: "#0a0a0a" }],
+    colors: [{ name: "Preto", hex: "#0a0a0a" }],
     stock: 8,
-    bestseller: true,
-    order: 7,
-    related: ["toca-bee-preta", "balaclava-bee", "fato-empire-amarelo"],
+    order: 6,
+    related: ["toca-bee-preta", "balaclava-bee"],
   },
 ];
 
@@ -304,16 +273,20 @@ async function seedSingletons() {
   await client.createOrReplace({
     _id: "home",
     _type: "home",
-    heroEyebrowPT: "Plug Empire",
-    heroEyebrowEN: "Plug Empire",
-    heroTitlePT: "Todo o sonho é possível.",
-    heroTitleEN: "Every dream is possible.",
+    heroEyebrowPT: "Stravages",
+    heroEyebrowEN: "Stravages",
+    heroTitlePT: "Nascido no risco. Movido pela visão.",
+    heroTitleEN: "Born in risk. Driven by vision.",
     heroSubtitlePT:
-      "Streetwear premium nascido em Portugal. Cada peça do Plug Empire é feita para os que constroem o seu próprio nome.",
+      "Não é só roupa. É presença. É escolha. É sobrevivência com identidade. Cada peça Stravages é feita para quem vem de baixo e recusa o destino imposto.",
     heroSubtitleEN:
-      "Premium streetwear born in Portugal. Every Plug Empire piece is made for those building their own name.",
-    storyQuotePT: "Todo o sonho é possível… basta acreditar.",
-    storyQuoteEN: "Every dream is possible… you just have to believe.",
+      "More than clothing. It's presence. It's choice. It's survival with identity. Every Stravages piece is made for those who come from below and refuse the destiny imposed on them.",
+    storyQuotePT: "Mesmo quando tudo aponta contra ti, tu vais.",
+    storyQuoteEN: "Even when everything points against you, you go.",
+    storyBodyPT:
+      "Stravages nasce no conflito entre pressão e propósito. Entre o que te rodeia… e aquilo que recusas tornar-te. Cada peça — toca, balaclava, carteira — é feita para quem vem de baixo, para quem teve de ser mais forte do que as circunstâncias.",
+    storyBodyEN:
+      "Stravages is born in the conflict between pressure and purpose. Between what surrounds you… and what you refuse to become. Every piece — beanie, balaclava, wallet — is made for those who come from below, for those who had to be stronger than circumstances.",
   });
   console.log("  ✓ home");
 
@@ -323,36 +296,54 @@ async function seedSingletons() {
     headlinePT: "A nossa história",
     headlineEN: "Our story",
     introPT:
-      "Plug Empire nasceu em Portugal como uma promessa simples: vestir os que constroem o seu próprio nome.",
+      "Stravages nasce na tensão entre o que te rodeia e aquilo que recusas tornar-te. Para quem vem de baixo, para quem enfrenta pressão, para quem não aceita o destino imposto.",
     introEN:
-      "Plug Empire was born in Portugal as a simple promise: dressing those building their own name.",
+      "Stravages is born in the tension between what surrounds you and what you refuse to become. For those who come from below, who face pressure, who refuse the destiny imposed on them.",
+    manifestoPT: `Não começou com um plano. Começou com sobrevivência. Num lugar onde sair de casa nunca era só sair — era arriscar. Era não saber se o dia acabava como começou.
+
+Crescer ali não era simples. Ou escolhes quem queres ser… ou o ambiente escolhe por ti. Todos os dias havia exemplos do caminho fácil. Dinheiro rápido. Decisões erradas. Destinos previsíveis. Mas dentro de alguns havia outra voz. Uma pergunta silenciosa: "Isto é tudo… ou há mais?"
+
+Stravages nasce exatamente aí. No conflito entre pressão e propósito. Entre o que te rodeia… e aquilo que recusas tornar-te.
+
+A abelha carrega essa verdade. Sai todos os dias da colmeia sem garantias. Sem certeza de voltar. Com risco constante. Mesmo assim, vai. Não porque é fácil — mas porque é o que tem de ser feito. E talvez o mais poderoso: voa mesmo quando dizem que não devia conseguir. Tal como nós.
+
+Não é só roupa. É identidade. É mentalidade. É a prova de que de onde vens não define até onde vais.`,
+    manifestoEN: `It didn't start with a plan. It started with survival. In a place where leaving home was never just leaving — it was risking. It was not knowing if the day would end the way it started.
+
+Growing up there wasn't simple. Either you choose who you want to be… or the environment chooses for you. Every day there were examples of the easy path. Quick money. Wrong decisions. Predictable destinies. But inside some, there was another voice. A silent question: "Is this all… or is there more?"
+
+Stravages is born exactly there. In the conflict between pressure and purpose. Between what surrounds you… and what you refuse to become.
+
+The bee carries that truth. It leaves the hive every day without guarantees. Without certainty of returning. With constant risk. Even so, it goes. Not because it's easy — but because it's what has to be done. And maybe most powerful: it flies even when they say it shouldn't be able to. Just like us.
+
+More than clothing. It's identity. It's mentality. It's proof that where you come from doesn't define how far you go.`,
     pillars: [
       {
         _key: "p1",
-        titlePT: "Origem",
-        titleEN: "Origin",
+        titlePT: "Colmeia",
+        titleEN: "Hive",
         bodyPT:
-          "Desenhado e curado em Portugal. As peças são produzidas com fornecedores parceiros nos EUA, Emirados, Turquia e Namíbia.",
+          "Sai da colmeia todos os dias sem garantias. Mesmo assim, vai. Para quem enfrenta pressão e recusa o destino imposto.",
         bodyEN:
-          "Designed and curated in Portugal. Pieces produced with partner suppliers in the USA, UAE, Turkey and Namibia.",
+          "Leaves the hive every day without guarantees. Goes anyway. For those who face pressure and refuse the destiny imposed on them.",
       },
       {
         _key: "p2",
         titlePT: "Detalhe",
         titleEN: "Detail",
         bodyPT:
-          "Cada toca leva forro de cetim. Cada carteira é gravada em folha dourada. Cada costura é inspeccionada.",
+          "Cada toca leva forro de cetim. Cada peça é inspecionada antes de sair. Sem atalhos. Sem desculpas.",
         bodyEN:
-          "Every beanie has a satin lining. Every wallet is stamped with gold foil. Every seam is inspected.",
+          "Every beanie has a satin lining. Every piece is inspected before it leaves. No shortcuts. No excuses.",
       },
       {
         _key: "p3",
-        titlePT: "Comunidade",
-        titleEN: "Community",
+        titlePT: "Identidade",
+        titleEN: "Identity",
         bodyPT:
-          "Vestimos artistas, fundadores, gente que constrói. Cada peça é uma chancela de quem acredita.",
+          "Não é moda. É bandeira. É o nome que escolhemos vestir — para quem vem de baixo e vai longe.",
         bodyEN:
-          "We dress artists, founders, builders. Every piece is a stamp of someone who believes.",
+          "Not fashion. A flag. The name we choose to wear — for those who come from below and go far.",
       },
     ],
   });
@@ -363,12 +354,20 @@ async function seedSingletons() {
     _type: "contact",
     headlinePT: "Fala connosco",
     headlineEN: "Get in touch",
+    introPT:
+      "Atendimento direto da casa. Encomendas, dúvidas sobre tamanhos, parcerias — escolhe o canal.",
+    introEN:
+      "Direct from the house. Orders, sizing questions, partnerships — pick a channel.",
     email: "Plugempire.contact@gmail.com",
-    whatsapp: "351900000000",
-    instagramMain: "plug_empire",
-    instagramBrand: "stravages.clo",
+    whatsapp: "351934728032",
+    instagramMain: "stravages.clo",
+    instagramBrand: "plug_empire",
     linktree: "https://linktr.ee/plug_empire",
     address: "Lisboa, Portugal",
+    hoursPT:
+      "Respondemos via WhatsApp todos os dias, das 09h às 22h (hora de Lisboa). Para encomendas urgentes, menciona na primeira mensagem.",
+    hoursEN:
+      "We reply on WhatsApp every day, 9 AM to 10 PM (Lisbon time). For urgent orders, mention it in your first message.",
   });
   console.log("  ✓ contact");
 }

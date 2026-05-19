@@ -43,12 +43,12 @@ export const contact = defineType({
     }),
     defineField({
       name: "instagramMain",
-      title: "Instagram Plug Empire (handle, sem @)",
+      title: "Instagram Stravages (handle, sem @)",
       type: "string",
     }),
     defineField({
       name: "instagramBrand",
-      title: "Instagram Stravages (handle, sem @)",
+      title: "Instagram secundário (opcional, sem @)",
       type: "string",
     }),
     defineField({

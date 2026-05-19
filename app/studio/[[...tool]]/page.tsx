@@ -29,7 +29,7 @@ export default function StudioPage() {
               marginBottom: 12,
             }}
           >
-            PLUG EMPIRE · STUDIO
+            STRAVAGES · STUDIO
           </div>
           <h1 style={{ fontSize: 32, margin: "0 0 16px", lineHeight: 1.2 }}>
             Configuração pendente

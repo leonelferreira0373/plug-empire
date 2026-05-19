@@ -28,17 +28,17 @@ export function Footer() {
               <div className="relative h-12 w-12">
                 <Image
                   src="/brand/bee.png"
-                  alt="Plug Empire"
+                  alt="Stravages"
                   fill
                   className="object-contain"
                 />
               </div>
               <div>
                 <div className="font-display text-2xl tracking-[0.2em] font-bold">
-                  PLUG EMPIRE
+                  STRAVAGES
                 </div>
                 <div className="text-xs text-muted-foreground tracking-wider">
-                  EST. {BRAND.founded} · LUANDA
+                  EST. {BRAND.founded} · LISBOA
                 </div>
               </div>
             </div>
@@ -48,15 +48,6 @@ export function Footer() {
             <div className="mt-6 flex items-center gap-3">
               <a
                 href={`https://instagram.com/${BRAND.instagram_main}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Plug Empire on Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-gold hover:text-gold"
-              >
-                <InstagramIcon size={18} />
-              </a>
-              <a
-                href={`https://instagram.com/${BRAND.instagram_brand}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Stravages on Instagram"
@@ -119,14 +110,6 @@ export function Footer() {
                   className="text-foreground/80 transition-colors hover:text-gold"
                 >
                   {lang === "pt" ? "Balaclavas" : "Balaclavas"}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/loja?cat=fatos"
-                  className="text-foreground/80 transition-colors hover:text-gold"
-                >
-                  {lang === "pt" ? "Fatos" : "Tracksuits"}
                 </Link>
               </li>
               <li>
@@ -223,7 +206,7 @@ export function Footer() {
             <span>{BRAND.address}</span>
           </div>
           <div>
-            © {year} Plug Empire. {t.footer_rights}
+            © {year} Stravages. {t.footer_rights}
           </div>
         </div>
       </div>

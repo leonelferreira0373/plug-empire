@@ -23,17 +23,17 @@ const bebas = Bebas_Neue({
 
 export const metadata: Metadata = {
   title: {
-    default: "Plug Empire — Streetwear Premium · Luanda",
-    template: "%s · Plug Empire",
+    default: "Stravages — Streetwear Premium · Lisboa",
+    template: "%s · Stravages",
   },
   description:
-    "Plug Empire — streetwear premium nascido em Luanda. Tocas, balaclavas, fatos e carteiras em couro. Envio para toda Angola.",
-  metadataBase: new URL("https://plugempire.com"),
+    "Stravages — streetwear premium nascido em Lisboa. Tocas, balaclavas e acessórios. Envio para todo Portugal.",
+  metadataBase: new URL("https://plug-empire.vercel.app"),
   openGraph: {
-    title: "Plug Empire — Streetwear Premium",
-    description: "Todo o sonho é possível. Basta acreditar.",
+    title: "Stravages — Streetwear Premium",
+    description: "Nascido no risco. Movido pela visão.",
     type: "website",
-    locale: "pt_AO",
+    locale: "pt_PT",
   },
   icons: {
     icon: "/brand/bee.png",

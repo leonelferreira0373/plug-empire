@@ -3,12 +3,18 @@
 The site works fine without Sanity (falls back to hardcoded products). Sanity is
 only required to give the client an editable admin panel at `/studio`.
 
+> **Already migrated under the "Plug Empire" name?**
+> Pull the latest code, then run `node scripts/apply-stravages-rebrand.mjs` to
+> delete discontinued products (fato, old carteira), reset prices to 25/20 €,
+> and rewrite all page singletons with the new Stravages copy. Then re-upload
+> the new carteira image in `/studio` if needed.
+
 ## 1 · Create the Sanity project
 
 1. Open [sanity.io/manage](https://www.sanity.io/manage) and sign in with Google
    (use the brand's Google account — `Plugempire.contact@gmail.com`).
 2. Click **Create new project**.
-3. Project name: `plug-empire` · Dataset: `production` · Plan: **Free**.
+3. Project name: `stravages` · Dataset: `production` · Plan: **Free**.
 4. After creation, note the **Project ID** (visible in the project overview).
 
 ## 2 · Generate an API token

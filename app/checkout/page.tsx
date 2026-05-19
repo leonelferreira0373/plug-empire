@@ -171,7 +171,7 @@ export default function CheckoutPage() {
 
       <div className="mt-6 border-b border-border pb-6">
         <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-          Plug Empire
+          Stravages
         </div>
         <h1 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl">
           Checkout

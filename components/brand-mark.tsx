@@ -21,7 +21,7 @@ export function BrandMark({
       >
         <Image
           src="/brand/bee.png"
-          alt="Plug Empire"
+          alt="Stravages"
           fill
           className="object-contain"
           priority
@@ -29,7 +29,7 @@ export function BrandMark({
       </div>
       {showWordmark && (
         <span className="font-display text-xl tracking-[0.18em] font-bold text-foreground group-hover:text-gold transition-colors">
-          PLUG EMPIRE
+          STRAVAGES
         </span>
       )}
     </Link>

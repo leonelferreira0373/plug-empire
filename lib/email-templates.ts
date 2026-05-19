@@ -48,12 +48,12 @@ function layout(body: string) {
     <tr><td align="center" style="padding:32px 16px">
       <table cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;background:#0a0a0a;border:1px solid #1f1f1f">
         <tr><td style="padding:32px 28px 16px;border-bottom:1px solid #1f1f1f">
-          <div style="font-size:11px;letter-spacing:4px;color:#D4AF37;font-weight:700">PLUG EMPIRE</div>
-          <div style="font-size:11px;color:#666;letter-spacing:2px;margin-top:4px">PORTUGAL · EST. 2022</div>
+          <div style="font-size:11px;letter-spacing:4px;color:#D4AF37;font-weight:700">STRAVAGES</div>
+          <div style="font-size:11px;color:#666;letter-spacing:2px;margin-top:4px">LISBOA · PORTUGAL</div>
         </td></tr>
         <tr><td style="padding:32px 28px">${body}</td></tr>
         <tr><td style="padding:24px 28px;border-top:1px solid #1f1f1f;text-align:center">
-          <div style="font-size:11px;color:#666;letter-spacing:1px">© Plug Empire · Todos os direitos reservados</div>
+          <div style="font-size:11px;color:#666;letter-spacing:1px">© Stravages · Todos os direitos reservados</div>
         </td></tr>
       </table>
     </td></tr>

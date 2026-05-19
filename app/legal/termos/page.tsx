@@ -8,15 +8,15 @@ export default function TermosPage() {
     <LegalPage
       title={{ pt: "Termos & Condições", en: "Terms & Conditions" }}
       intro={{
-        pt: "Estes termos regulam a utilização do site da Plug Empire e a compra dos produtos apresentados. Ao usar o site, aceitas estes termos.",
-        en: "These terms govern the use of the Plug Empire site and the purchase of the products shown. By using the site, you agree to these terms.",
+        pt: "Estes termos regulam a utilização do site da Stravages e a compra dos produtos apresentados. Ao usar o site, aceitas estes termos.",
+        en: "These terms govern the use of the Stravages site and the purchase of the products shown. By using the site, you agree to these terms.",
       }}
       sections={[
         {
           heading: { pt: "1. A marca", en: "1. The brand" },
           body: {
-            pt: <L>Plug Empire é uma marca portuguesa de streetwear premium, com sede em {BRAND.address}. Email: {BRAND.email}.</L>,
-            en: <L>Plug Empire is a Portuguese premium streetwear brand based in {BRAND.address}. Email: {BRAND.email}.</L>,
+            pt: <L>Stravages é uma marca portuguesa de streetwear premium, com sede em {BRAND.address}. Email: {BRAND.email}.</L>,
+            en: <L>Stravages is a Portuguese premium streetwear brand based in {BRAND.address}. Email: {BRAND.email}.</L>,
           },
         },
         {
@@ -79,15 +79,15 @@ export default function TermosPage() {
         {
           heading: { pt: "4. Propriedade intelectual", en: "4. Intellectual property" },
           body: {
-            pt: <L>O logotipo, fotografias, textos e identidade visual da Plug Empire e da linha Stravages são propriedade da casa. Qualquer uso comercial não autorizado é proibido.</L>,
-            en: <L>The Plug Empire and Stravages logos, photography, copy and visual identity are property of the house. Any unauthorized commercial use is prohibited.</L>,
+            pt: <L>O logotipo, fotografias, textos e identidade visual da Stravages são propriedade da casa. Qualquer uso comercial não autorizado é proibido.</L>,
+            en: <L>The Stravages logo, photography, copy and visual identity are property of the house. Any unauthorized commercial use is prohibited.</L>,
           },
         },
         {
           heading: { pt: "5. Limitação de responsabilidade", en: "5. Limitation of liability" },
           body: {
-            pt: <L>A Plug Empire não é responsável por danos indirectos resultantes do uso do site ou dos produtos para além do uso normal previsto. Em caso de defeito comprovado, aplica-se a política de devoluções.</L>,
-            en: <L>Plug Empire is not liable for indirect damages arising from use of the site or the products beyond their intended normal use. In case of proven defect, the returns policy applies.</L>,
+            pt: <L>A Stravages não é responsável por danos indiretos resultantes do uso do site ou dos produtos para além do uso normal previsto. Em caso de defeito comprovado, aplica-se a política de devoluções.</L>,
+            en: <L>Stravages is not liable for indirect damages arising from use of the site or the products beyond their intended normal use. In case of proven defect, the returns policy applies.</L>,
           },
         },
         {

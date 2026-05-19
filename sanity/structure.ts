@@ -3,7 +3,7 @@ import type { StructureBuilder } from "sanity/structure";
 // Custom Studio structure: singletons grouped, then collections.
 export const structure = (S: StructureBuilder) =>
   S.list()
-    .title("Plug Empire")
+    .title("Stravages")
     .items([
       // Singletons — one document each, no "create new"
       S.listItem()

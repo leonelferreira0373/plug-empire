@@ -4,7 +4,7 @@
 
 import { isSanityConfigured, sanityClient, imgUrl } from "./sanity";
 
-export type Category = "tocas" | "balaclavas" | "fatos" | "carteiras" | "joalharia";
+export type Category = "tocas" | "balaclavas" | "carteiras" | "joalharia";
 
 export type Product = {
   slug: string;
@@ -30,12 +30,11 @@ const FALLBACK: Product[] = [
     slug: "toca-bee-preta",
     name: { pt: "Toca Bee — Preta", en: "Bee Beanie — Black" },
     category: "tocas",
-    price: 34.9,
-    oldPrice: 49.9,
+    price: 25,
     badge: { pt: "Mais vendido", en: "Bestseller" },
     description: {
-      pt: "A toca emblema do Plug Empire. Algodão de alta densidade com forro de cetim que protege o cabelo e evita o frizz. Bordado dourado da abelha — assinatura discreta, presença total.",
-      en: "The flagship Plug Empire beanie. High-density cotton with a satin lining that protects hair and prevents frizz. Gold bee embroidery — discreet signature, total presence.",
+      pt: "A toca emblema Stravages. Algodão de alta densidade com forro de cetim que protege o cabelo e evita o frizz. Bordado dourado da abelha — assinatura discreta, presença total.",
+      en: "The flagship Stravages beanie. High-density cotton with a satin lining that protects hair and prevents frizz. Gold bee embroidery — discreet signature, total presence.",
     },
     features: {
       pt: [
@@ -73,7 +72,7 @@ const FALLBACK: Product[] = [
     slug: "toca-bee-branca",
     name: { pt: "Toca Bee — Branca", en: "Bee Beanie — White" },
     category: "tocas",
-    price: 34.9,
+    price: 25,
     description: {
       pt: "Versão branca da toca assinatura. Limpa, leve, com o bordado da abelha em amarelo dourado.",
       en: "White version of the signature beanie. Clean, lightweight, with the bee embroidered in golden yellow.",
@@ -95,7 +94,7 @@ const FALLBACK: Product[] = [
     slug: "toca-bee-amarela",
     name: { pt: "Toca Bee — Amarela", en: "Bee Beanie — Yellow" },
     category: "tocas",
-    price: 34.9,
+    price: 25,
     badge: { pt: "Edição limitada", en: "Limited drop" },
     description: {
       pt: "A toca em amarelo abelha — uma declaração ousada com o lettering Stravages preto.",
@@ -112,13 +111,13 @@ const FALLBACK: Product[] = [
       { name: "Preto", hex: "#0a0a0a" },
     ],
     stock: 10,
-    related: ["toca-bee-preta", "fato-empire-amarelo", "balaclava-bee"],
+    related: ["toca-bee-preta", "balaclava-bee", "toca-bee-rosa"],
   },
   {
     slug: "toca-bee-rosa",
     name: { pt: "Toca Bee — Rosa", en: "Bee Beanie — Pink" },
     category: "tocas",
-    price: 34.9,
+    price: 25,
     description: {
       pt: "Rosa pó com o lettering Stravages a destacar-se.",
       en: "Powder pink with the Stravages lettering set against it.",
@@ -139,13 +138,13 @@ const FALLBACK: Product[] = [
       { name: "Branco", hex: "#fafafa" },
     ],
     stock: 12,
-    related: ["toca-bee-preta", "toca-bee-branca", "carteira-stravages"],
+    related: ["toca-bee-preta", "toca-bee-branca", "carteira-couro"],
   },
   {
     slug: "balaclava-bee",
     name: { pt: "Balaclava Bee", en: "Bee Balaclava" },
     category: "balaclavas",
-    price: 54.9,
+    price: 25,
     badge: { pt: "Novo", en: "New" },
     description: {
       pt: "Balaclava em tecido técnico preto, com a abelha bordada em amarelo dourado.",
@@ -159,54 +158,26 @@ const FALLBACK: Product[] = [
     sizes: ["Único"],
     colors: [{ name: "Preto", hex: "#0a0a0a" }],
     stock: 15,
-    related: ["toca-bee-preta", "carteira-stravages", "fato-empire-amarelo"],
+    related: ["toca-bee-preta", "carteira-couro", "toca-bee-amarela"],
   },
   {
-    slug: "fato-empire-amarelo",
-    name: { pt: "Fato Empire — Amarelo", en: "Empire Tracksuit — Yellow" },
-    category: "fatos",
-    price: 179.9,
-    oldPrice: 219.9,
-    badge: { pt: "Conjunto", en: "Full set" },
-    description: {
-      pt: "Conjunto completo: hoodie zip + calça de fato em amarelo abelha, com patches bordados.",
-      en: "Full set: zip hoodie + tracksuit pants in bee-yellow with embroidered patches.",
-    },
-    features: {
-      pt: ["Fecho dourado", "Aplicações bordadas", "Toca incluída", "Gramagem pesada"],
-      en: ["Gold zipper", "Embroidered appliqués", "Beanie included", "Heavyweight cotton"],
-    },
-    images: [
-      "/products/tracksuit-yellow-1.jpg",
-      "/products/tracksuit-yellow-2.jpg",
-      "/products/tracksuit-yellow-3.jpg",
-    ],
-    sizes: ["S", "M", "L", "XL"],
-    colors: [{ name: "Amarelo", hex: "#F5B82E" }],
-    stock: 6,
-    bestseller: true,
-    related: ["toca-bee-amarela", "carteira-stravages", "balaclava-bee"],
-  },
-  {
-    slug: "carteira-stravages",
-    name: { pt: "Carteira Stravages — Couro", en: "Stravages Wallet — Leather" },
+    slug: "carteira-couro",
+    name: { pt: "Carteira — Couro", en: "Wallet — Leather" },
     category: "carteiras",
-    price: 89.9,
-    badge: { pt: "Premium", en: "Premium" },
+    price: 20,
     description: {
-      pt: "Carteira em couro preto com a abelha e o lettering Stravages gravados a quente em folha dourada.",
-      en: "Black leather wallet with the bee and Stravages lettering hot-stamped in gold foil.",
+      pt: "Carteira em couro preto. Acessório complementar selecionado pela casa — sem branding Stravages, para quem prefere uma peça discreta.",
+      en: "Black leather wallet. A complementary accessory curated by the house — without Stravages branding, for those who prefer a discreet piece.",
     },
     features: {
-      pt: ["Couro genuíno", "Folha dourada", "6 compartimentos", "Caixa premium"],
-      en: ["Genuine leather", "Gold foil hot-stamp", "6 card slots", "Premium box"],
+      pt: ["Couro genuíno", "6 compartimentos para cartões", "Compartimento para notas", "Sem branding visível"],
+      en: ["Genuine leather", "6 card slots", "Banknote compartment", "No visible branding"],
     },
     images: ["/products/wallet-1.png"],
     sizes: ["Único"],
-    colors: [{ name: "Preto / Ouro", hex: "#0a0a0a" }],
+    colors: [{ name: "Preto", hex: "#0a0a0a" }],
     stock: 8,
-    bestseller: true,
-    related: ["toca-bee-preta", "balaclava-bee", "fato-empire-amarelo"],
+    related: ["toca-bee-preta", "balaclava-bee"],
   },
 ];
 
@@ -335,7 +306,6 @@ export async function getRelated(slugs: string[] | undefined): Promise<Product[]
 export const CATEGORIES: { key: Category; label: { pt: string; en: string } }[] = [
   { key: "tocas", label: { pt: "Tocas", en: "Beanies" } },
   { key: "balaclavas", label: { pt: "Balaclavas", en: "Balaclavas" } },
-  { key: "fatos", label: { pt: "Fatos", en: "Tracksuits" } },
   { key: "carteiras", label: { pt: "Carteiras", en: "Wallets" } },
   { key: "joalharia", label: { pt: "Joalharia", en: "Jewelry" } },
 ];

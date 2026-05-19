@@ -32,24 +32,27 @@ export function HomeClient({
   const storyQuote =
     (lang === "pt" ? home?.storyQuotePT : home?.storyQuoteEN) ??
     (lang === "pt"
-      ? "Todo o sonho é possível… basta acreditar."
-      : "Every dream is possible… you just have to believe.");
+      ? "Mesmo quando tudo aponta contra ti, tu vais."
+      : "Even when everything points against you, you go.");
   const storyBody =
     (lang === "pt" ? home?.storyBodyPT : home?.storyBodyEN) ??
     (lang === "pt"
-      ? "Marca portuguesa. Vestimos quem constrói o seu próprio nome. Cada peça do Plug Empire — toca, balaclava, fato, carteira — é desenhada e produzida com o mesmo padrão: qualidade premium, identidade clara, sem atalhos."
-      : "Portuguese brand. We dress those building their own name. Every Plug Empire piece — beanie, balaclava, tracksuit, wallet — is designed and produced to the same standard: premium quality, clear identity, no shortcuts.");
+      ? "Stravages nasce no conflito entre pressão e propósito. Entre o que te rodeia… e aquilo que recusas tornar-te. Cada peça — toca, balaclava, carteira — é feita para quem vem de baixo, para quem teve de ser mais forte do que as circunstâncias. Não é só roupa. É identidade. É a prova de que de onde vens não define até onde vais."
+      : "Stravages is born in the conflict between pressure and purpose. Between what surrounds you… and what you refuse to become. Every piece — beanie, balaclava, wallet — is made for those who come from below, for those who had to be stronger than circumstances. More than clothing. It's identity. It's proof that where you come from doesn't define how far you go.");
 
   const featured =
     products.find((p) => p.slug === "toca-bee-preta") ?? products[0];
   const grid = products.slice(0, 6);
   const wallet =
-    products.find((p) => p.slug === "carteira-stravages") ?? products[0];
+    products.find((p) => p.slug === "carteira-couro") ??
+    products.find((p) => p.slug === "balaclava-bee") ??
+    products[1] ??
+    products[0];
 
   if (!featured || !wallet) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-32 text-center sm:px-6">
-        <h1 className="font-display text-3xl">Plug Empire</h1>
+        <h1 className="font-display text-3xl">STRAVAGES</h1>
         <p className="mt-4 text-muted-foreground">
           {lang === "pt"
             ? "A loja está a ser preparada. Volta em breve."

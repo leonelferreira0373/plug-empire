@@ -28,7 +28,7 @@ export function LegalPage({
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
       <div className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-        Plug Empire · Legal
+        Stravages · Legal
       </div>
       <h1 className="mt-4 font-display text-4xl tracking-tight sm:text-5xl">
         {title[lang]}

@@ -44,7 +44,7 @@ export async function POST(req: Request) {
 
   const owner = process.env.EMAIL_OWNER;
   const iban = process.env.BANK_IBAN ?? "";
-  const beneficiary = process.env.BANK_BENEFICIARY ?? "Plug Empire";
+  const beneficiary = process.env.BANK_BENEFICIARY ?? "Stravages";
   const bic = process.env.BANK_BIC || undefined;
 
   if (!owner || !iban) {
