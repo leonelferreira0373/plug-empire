@@ -10,17 +10,17 @@
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",
-    "@sanity/vision": "^5.25.1",
+    "@sanity/vision": "^6.15.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.14.0",
-    "next": "16.2.6",
-    "next-sanity": "^12.4.5",
+    "next": "16.3.3",
+    "next-sanity": "^13.3.4",
     "next-themes": "^0.4.6",
-    "nodemailer": "^8.0.7",
+    "nodemailer": "^9.1.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "sanity": "^5.25.1",
+    "sanity": "^6.15.0",
     "styled-components": "^6.4.1",
     "tailwind-merge": "^3.6.0",
     "zustand": "^5.0.13"
@@ -35,7 +35,7 @@
     "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
